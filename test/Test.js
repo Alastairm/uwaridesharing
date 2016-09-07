@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
 import React, { View, Text } from 'react-native';
-import Test from '../Components/Test.jsx';
+import Test from '../components/Test.jsx';
 
 describe('<Test />', () => {
   it('it should render 1 view component', () => {
