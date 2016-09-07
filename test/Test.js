@@ -17,6 +17,6 @@ describe('<Test />', () => {
   });
   it('do we get a slack notification when it breaks?', () => {
     const wrapper = shallow(<Test/>);
-    expect(wrapper.find(Text)).to.have.length(2);
+    expect(wrapper.find(Text)).to.have.length(3);
   });
 });
