@@ -1,50 +1,57 @@
 import React, { Component, Proptypes} from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
-// import store from 'react-native-simple-store';
 import UserInput from './UserInput.js';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
-    width: 200,
   },
-  buttonContainer: {
+  buttonBox: {
     padding:10,
     height:45,
+    width:320,
     overflow:'hidden',
     borderRadius:4,
-    backgroundColor: 'steelblue'}
+    backgroundColor: 'steelblue'},
+  buttonContainer: {
+    height: 60,
+    alignItems: 'center'
+  }
 });
 
 export default class UserForm extends Component {
   constructor(props) {
     super(props);
+      // ToDO: Check if user information is already saved
       this.state = {
-        userData: {
+        user: {
           'name': "",
           'email':"",
           'phone':"",
         },
         data: "",
       }
-    this.onChange = this.onChange.bind(this);
     this.onNext = this.onNext.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
-  }
-  onChange(field, val) {
-    userData = this.state.userData;
-    userData[field] = val;
-    this.setState({userData: userData});
+    this.onRead = this.onRead.bind(this);
   }
   onNext() {
     this.props.navigator.push({
-      component: CheckForm
+      component: BlankScene
     });
   }
-  onSave() {
-    AsyncStorage.setItem('userData', JSON.stringify(this.state.userData));
+  onChange(field, val) {
+    user = this.state.user;
+    user[field] = val;
+    this.setState({user: user});
+  }
+  async onSave() {
+    await AsyncStorage.setItem('user', JSON.stringify(this.state.user));
+  }
+  async onRead() {
+    let value = await AsyncStorage.getItem('user')
+    this.setState({data:value});
   }
   render() {
     return (
@@ -52,58 +59,56 @@ export default class UserForm extends Component {
         <UserInput onChange={this.onChange} field ="name"/>
         <UserInput onChange={this.onChange} field ="email"/>
         <UserInput onChange={this.onChange} field ="phone"/>
-        <Button
-          containerStyle={styles.buttonContainer}
-          style={{fontSize: 20, color: 'white'}}
-          onPress={this.onNext}>
-          Next Page
-        </Button>
-        <Button
-          containerStyle={styles.buttonContainer}
-          style={{fontSize: 20, color: 'white'}}
-          onPress={this.onSave}>
-          Save
-        </Button>
+        <View style={styles.buttonContainer}>
+          <Button
+            containerStyle={styles.buttonBox}
+            style={{fontSize: 20, color: 'white'}}
+            onPress={this.onNext}>
+            Next Page
+          </Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            containerStyle={styles.buttonBox}
+            style={{fontSize: 20, color: 'white'}}
+            onPress={this.onSave}>
+            Save
+          </Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            containerStyle={styles.buttonBox}
+            style={{fontSize: 20, color: 'white'}}
+            onPress={this.onRead}>
+              Read Form Data
+          </Button>
+        </View>
+        <Text>
+        {this.state.data}
+        </Text>
       </View>
     );
   }
 }
 
 
-class CheckForm extends Component {
+class BlankScene extends Component {
   constructor(props) {
     super(props);
-    this.state = {data: ""}
-    this.onBackPress = this.onBackPress.bind(this);
-    this.onRead = this.onRead.bind(this);
+    this.onBack = this.onBack.bind(this);
   }
-  onBackPress() {
+  onBack() {
     this.props.navigator.pop();
-  }
-  onRead() {
-    AsyncStorage.getItem('userData')
-    .then( (value) => {
-        this.setState({data:value});
-      }).done();
   }
   render() {
     return(
-      <View>
+      <View style={styles.buttonContainer}>
         <Button
-        containerStyle={styles.buttonContainer}
+        containerStyle={styles.buttonBox}
         style={{fontSize: 20, color: 'white'}}
-        onPress={this.onBackPress}>
+        onPress={this.onBack}>
           Back
         </Button>
-        <Button
-          containerStyle={styles.buttonContainer}
-          style={{fontSize: 20, color: 'white'}}
-          onPress={this.onRead}>
-            Read Form Data
-        </Button>
-        <Text>
-        {this.state.data}
-        </Text>
       </View>
     );
   }

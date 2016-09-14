@@ -2,20 +2,18 @@ import React, { Component, Proptypes } from 'react';
 import { StyleSheet, Text, TextInput } from 'react-native';
 
 const styles = StyleSheet.create({
-  invalid: {
-    borderRadius: 5,
-    borderColor: 'red',
-  },
   valid: {
-    borderRadius: 1,
-    borderColor: 'black'
-  }
+    backgroundColor: '#ffffff',
+  },
+  invalid: {
+    backgroundColor: '#ff0000',
+  },
 })
 
 class UserInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: "", style:{}}
+    this.state = {text: "", valid: true};
     this.inputProps = this.inputProps.bind(this);
     this.onChange = this.onChange.bind(this)
   }
@@ -28,16 +26,18 @@ class UserInput extends Component {
     }
   }
   onChange(text) {
-    this.setState({text});
-    this.validate();
+    this.setState({text: text});
+    this.validate(text);
     this.props.onChange(this.props.field, text);
   }
-  validate() {
-    // if (this.state.field == "email") {
-      if (!emailRegex.test(this.state.text)) {
-        this.setState({invalid: true});
+  validate(text) {
+     if (this.props.field == "email") {
+      if (emailRegex.test(text)==true) {
+        this.setState({valid: true});
+      } else {
+        this.setState({valid: false})
       }
-    // }
+     }
   }
   render() {
     const { label, placeholder, keyboardType, onChange } = this.inputProps();
@@ -52,10 +52,7 @@ class UserInput extends Component {
     );
   }
 }
-// UserInput.propTypes = {
-//   field: Proptypes.string,
-//   onChange: Proptypes.func,
-// }
+
 UserInput.defaultProps = {
   labels: {
     name: "NAME",
@@ -76,4 +73,4 @@ UserInput.defaultProps = {
 
 export default UserInput;
 
-  const emailRegex = re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(uwa.edu.au|student.uwa.edu.au)$/;
+const emailRegex = re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(uwa.edu.au|student.uwa.edu.au)$/;
