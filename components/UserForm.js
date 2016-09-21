@@ -2,6 +2,7 @@ import React, { Component, Proptypes} from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import UserInput from './UserInput.js';
+import Map from './Map.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -38,7 +39,7 @@ export default class UserForm extends Component {
   }
   onNext() {
     this.props.navigator.push({
-      component: BlankScene
+      component: Map
     });
   }
   onChange(field, val) {
