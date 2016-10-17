@@ -1,0 +1,38 @@
+exports[`test Email field matches previous snapshot 1`] = `
+<TextInput
+  keyboardType="email-address"
+  onChangeText={[Function]}
+  placeholder="example@uwa.edu.au"
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+    }
+  }
+  value="" />
+`;
+
+exports[`test Name field matches previous snapshot 1`] = `
+<TextInput
+  keyboardType="default"
+  onChangeText={[Function]}
+  placeholder="Your Name"
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+    }
+  }
+  value="" />
+`;
+
+exports[`test Phone field matches previous snapshot 1`] = `
+<TextInput
+  keyboardType="phone-pad"
+  onChangeText={[Function]}
+  placeholder="04 1234 5678"
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+    }
+  }
+  value="" />
+`;
