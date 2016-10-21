@@ -1,7 +1,7 @@
 import React, { Component, Proptypes} from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
-import UserInput from './UserInput.js';
+import UserInput from '../components/UserInput.js';
 import Map from './Map.js'
 
 const styles = StyleSheet.create({

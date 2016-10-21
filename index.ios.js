@@ -10,5 +10,4 @@
    }
  }
 
-
  AppRegistry.registerComponent('ridesharing', () => ridesharing);
