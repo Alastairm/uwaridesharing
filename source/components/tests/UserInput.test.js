@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import UserInput from './UserInput.js'
+import UserInput from '../components/UserInput.js'
 it('Name field matches previous snapshot', () => {
   const component = renderer.create(
     <UserInput field="name"/>

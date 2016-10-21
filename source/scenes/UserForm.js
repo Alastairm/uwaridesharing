@@ -91,26 +91,3 @@ export default class UserForm extends Component {
     );
   }
 }
-
-
-class BlankScene extends Component {
-  constructor(props) {
-    super(props);
-    this.onBack = this.onBack.bind(this);
-  }
-  onBack() {
-    this.props.navigator.pop();
-  }
-  render() {
-    return(
-      <View style={styles.buttonContainer}>
-        <Button
-        containerStyle={styles.buttonBox}
-        style={{fontSize: 20, color: 'white'}}
-        onPress={this.onBack}>
-          Back
-        </Button>
-      </View>
-    );
-  }
-}

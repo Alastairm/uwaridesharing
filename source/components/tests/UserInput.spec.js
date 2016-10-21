@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 import {TextInput} from 'react-native';
-import UserInput from './UserInput.js';
+import UserInput from '../UserInput.js';
 
 function f( val) {
   console.log(val);
