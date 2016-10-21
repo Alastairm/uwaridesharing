@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image, Navigator, StyleSheet, View } from 'react-native';
 
 import UserForm from './UserForm.js'
+import Map from './Map.js';
 
 const styles = StyleSheet.create({
   container: {
