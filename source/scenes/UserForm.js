@@ -29,7 +29,7 @@ export default class UserForm extends Component {
       component: Map
     });
   }
-  onChange(field, val, valid) {
+  onChange(field, valid, val) {
     user = this.state.user;
     user[field] = (valid ? val: false); // Only save value if valid, otherwise  false
     this.setState({user: user});
@@ -46,7 +46,7 @@ export default class UserForm extends Component {
     let hasPhone = this.state.user.phone;
     if (hasName && hasEmail && hasPhone) { // If all fields are valid, save & goto next scene
       this.save();
-      onNext();
+      this.onNext();
     } else { // If not all fields are valid display error messages for invalid fields
       this.setState({showErrors: true})
     }

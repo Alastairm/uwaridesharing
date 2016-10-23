@@ -47,17 +47,18 @@ export default class UserInput extends Component {
     }
   }
   onChange(text) {
+    let valid = this.validate(text);
+    this.props.onChange(this.props.field, valid, text);
     this.setState({text: text});
-    this.validate(text);
-    this.props.onChange(this.props.field, this.state.valid, text);
+    this.setState({valid: valid});
   }
   validate(text) {
     if (this.props.field == "name") {
-      this.setState({valid: (nameRegex.test(text) ? true: false)})
+      return (nameRegex.test(text) ? true: false);
     }else if (this.props.field == "email") {
-      this.setState({valid: (emailRegex.test(text) ? true: false)})
+      return (emailRegex.test(text) ? true: false);
     }else if (this.props.field == "phone") {
-      this.setState({valid: (phoneRegex.test(text) ? true: false)})
+      return (phoneRegex.test(text) ? true: false);
     }
   }
   onFocus() {
@@ -95,5 +96,5 @@ export default class UserInput extends Component {
 }
 
 const nameRegex = re = /[\u0000-\uFFFF]/; //Matches all unicode strings
-const emailRegex = re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(uwa.edu.au|student.uwa.edu.au)$/;
-const phoneRegex = re = /04([0-9]{7})/;
+const emailRegex = re = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@(student\.|)(uwa\.edu\.au)$/
+const phoneRegex = re = /04[0-9]{8}$/;
