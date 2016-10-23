@@ -3,22 +3,8 @@ import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import UserInput from '../components/UserInput.js';
 import Map from './Map.js'
+import styles from './styles.js'
 
-const styles = StyleSheet.create({
-  container: {
-  },
-  buttonBox: {
-    padding:10,
-    height:45,
-    width:320,
-    overflow:'hidden',
-    borderRadius:4,
-    backgroundColor: 'steelblue'},
-  buttonContainer: {
-    height: 60,
-    alignItems: 'center'
-  }
-});
 
 export default class UserForm extends Component {
   constructor(props) {
@@ -48,15 +34,36 @@ export default class UserForm extends Component {
     this.setState({user: user});
   }
   async onSave() {
-    await AsyncStorage.setItem('user', JSON.stringify(this.state.user));
+    await AsyncStorage.setItem('user.saved', 'true');
+    await AsyncStorage.setItem('user.name', this.state.user.name);
+    await AsyncStorage.setItem('user.email', this.state.user.email);
+    await AsyncStorage.setItem('user.phone', this.state.user.phone)
   }
   async onRead() {
-    let value = await AsyncStorage.getItem('user')
-    this.setState({data:value});
+    let userSaved = await AsyncStorage.getItem('user.saved');
+    let userName = await AsyncStorage.getItem('user.name');
+    let userEmail = await AsyncStorage.getItem('user.email');
+    let userPhone = await AsyncStorage.getItem('user.phone');
+    this.setState({data: {
+      user: {
+        saved: userSaved,
+        name: userName,
+        email: userEmail,
+        phone: userPhone
+      }
+    }});
+  }
+  async componentDidMount() {
+    try{
+      let userSaved = await AsyncStorage.getItem('user.saved');
+      if (userSaved == 'true') {
+        this.onNext();
+      }
+    } catch(error) {}
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <UserInput onChange={this.onChange} field ="name"/>
         <UserInput onChange={this.onChange} field ="email"/>
         <UserInput onChange={this.onChange} field ="phone"/>
@@ -85,7 +92,8 @@ export default class UserForm extends Component {
           </Button>
         </View>
         <Text>
-        {this.state.data}
+          {JSON.stringify(this.state.user)}
+          {JSON.stringify(this.state.data)}
         </Text>
       </View>
     );

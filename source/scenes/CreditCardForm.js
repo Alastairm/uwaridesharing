@@ -55,7 +55,8 @@ export default class CreditCardForm extends Component {
       } catch(error) {
         this.setState({ResponseError: error})
       }
-      await AsyncStorage.setItem('user.stripe.id', responseJson.id);
+      await AsyncStorage.setItem('payment.saved', 'true');
+      await AsyncStorage.setItem('payment.custid', responseJson.id);
     }
   }
   render() {
