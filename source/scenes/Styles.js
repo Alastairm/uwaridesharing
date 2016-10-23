@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-export default styles = StyleSheet.create({
+export default Styles = StyleSheet.create({
+  scene: {
+    ...StyleSheet.absoluteFillObject,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
   mapScene: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
     flexWrap: 'wrap',
-  },
-  mapOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
   },
   header: {
     justifyContent: 'flex-start',

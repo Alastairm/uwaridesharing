@@ -3,7 +3,7 @@ import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import UserInput from '../components/UserInput.js';
 import Map from './Map.js'
-import styles from './styles.js'
+import Styles from './Styles.js'
 
 
 export default class UserForm extends Component {
@@ -12,85 +12,69 @@ export default class UserForm extends Component {
       // ToDO: Check if user information is already saved
       this.state = {
         user: {
-          'name': "",
-          'email':"",
-          'phone':"",
+          'name': false,
+          'email': false,
+          'phone': false,
         },
-        data: "",
+        valid: false,
+        submitted: false
       }
     this.onNext = this.onNext.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onSave = this.onSave.bind(this);
-    this.onRead = this.onRead.bind(this);
+    this.save = this.save.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   onNext() {
     this.props.navigator.push({
       component: Map
     });
   }
-  onChange(field, val) {
+  onChange(field, val, valid) {
     user = this.state.user;
-    user[field] = val;
+    user[field] = (valid ? val: false); // Only save value if valid, otherwise  false
     this.setState({user: user});
   }
-  async onSave() {
+  async save() {
     await AsyncStorage.setItem('user.saved', 'true');
     await AsyncStorage.setItem('user.name', this.state.user.name);
     await AsyncStorage.setItem('user.email', this.state.user.email);
     await AsyncStorage.setItem('user.phone', this.state.user.phone)
   }
-  async onRead() {
-    let userSaved = await AsyncStorage.getItem('user.saved');
-    let userName = await AsyncStorage.getItem('user.name');
-    let userEmail = await AsyncStorage.getItem('user.email');
-    let userPhone = await AsyncStorage.getItem('user.phone');
-    this.setState({data: {
-      user: {
-        saved: userSaved,
-        name: userName,
-        email: userEmail,
-        phone: userPhone
-      }
-    }});
-  }
-  async componentDidMount() {
-    try{
-      let userSaved = await AsyncStorage.getItem('user.saved');
-      if (userSaved == 'true') {
-        this.onNext();
-      }
-    } catch(error) {}
+  async onSubmit() {
+    let hasName = this.state.user.name;
+    let hasEmail = this.state.user.email;
+    let hasPhone = this.state.user.phone;
+    if (hasName && hasEmail && hasPhone) { // If all fields are valid, save & goto next scene
+      this.save();
+      onNext();
+    } else { // If not all fields are valid display error messages for invalid fields
+      this.setState({showErrors: true})
+    }
   }
   render() {
     return (
       <View>
-        <UserInput onChange={this.onChange} field ="name"/>
-        <UserInput onChange={this.onChange} field ="email"/>
-        <UserInput onChange={this.onChange} field ="phone"/>
-        <View style={styles.buttonContainer}>
+        <UserInput
+          field ="name"
+          onChange={this.onChange}
+          showError={this.state.showErrors}/>
+        <UserInput
+          field ="email"
+          onChange={this.onChange}
+          showError={this.state.showErrors}/>
+        <UserInput
+          field ="phone"
+          onChange={this.onChange}
+          showError={this.state.showErrors}/>
+        <View style={Styles.buttonContainer}>
           <Button
-            containerStyle={styles.buttonBox}
+            containerStyle={Styles.buttonBox}
             style={{fontSize: 20, color: 'white'}}
-            onPress={this.onNext}>
-            Next Page
+            onPress={this.onSubmit}>
+            Submit
           </Button>
         </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            containerStyle={styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
-            onPress={this.onSave}>
-            Save
-          </Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            containerStyle={styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
-            onPress={this.onRead}>
-              Read Form Data
-          </Button>
-        </View>
+
         <Text>
           {JSON.stringify(this.state.user)}
           {JSON.stringify(this.state.data)}

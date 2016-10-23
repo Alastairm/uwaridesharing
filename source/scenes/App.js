@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Navigator, StyleSheet, View } from 'react-native';
 
-import UserForm from './UserForm.js'
-import Map from './Map.js';
+import Welcome from './Welcome.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +17,7 @@ export default class App extends Component {
   render() {
     return (
     <Navigator
-      initialRoute={{component: UserForm}}
+      initialRoute={{component: Welcome}}
       renderScene={(route, navigator) => {
           return React.createElement(route.component, { navigator });
       }}
