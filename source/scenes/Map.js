@@ -4,7 +4,7 @@ import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import MapView from 'react-native-maps';
 import CreditCardForm from './CreditCardForm';
-import styles from './styles.js';
+import Styles from './Styles.js';
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class Map extends React.Component {
     console.log(region);
 
     return (
-      <View style={styles.mapScene}>
+      <View style={Styles.mapScene}>
         <MapView
           style={{...StyleSheet.absoluteFillObject}}
           region={this.state.region}
@@ -42,16 +42,16 @@ export default class Map extends React.Component {
         </MapView>
         <Icon name="location" size={90} color="#900" />
 
-        <View style={styles.mapOverlay}>
-          <View style={styles.header}>
+        <View style={Styles.scene}>
+          <View style={Styles.header}>
             <TextInput
               style={{backgroundColor: '#FFFFFF'}}
               placeholder="Pickup Location"/>
           </View>
-          <View style={styles.footer}>
-            <View style={styles.buttonContainer}>
+          <View style={Styles.footer}>
+            <View style={Styles.buttonContainer}>
               <Button
-                containerStyle={styles.buttonBox}
+                containerStyle={Styles.buttonBox}
                 style={{fontSize: 20, color: 'white'}}
                 onPress={this.onNext}>
                 Set Pickup Location
