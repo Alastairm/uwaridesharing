@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
+
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import MapView from 'react-native-maps';
-import CreditCardForm from './CreditCardForm';
+
+import LocationSearch from '../components/LocationSearch.js'
 import Styles from './Styles.js';
+import CreditCardForm from './CreditCardForm';
+
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -47,6 +51,7 @@ export default class Map extends React.Component {
             <TextInput
               style={{backgroundColor: '#FFFFFF'}}
               placeholder="Pickup Location"/>
+            <LocationSearch/>
           </View>
           <View style={Styles.footer}>
             <View style={Styles.buttonContainer}>

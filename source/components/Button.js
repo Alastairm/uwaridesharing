@@ -9,7 +9,7 @@ export default class Glenn extends Component {
     height:45,
     overflow: 'hidden',
     borderRadius:4,
-    fontSize:20
+    fontSize:20,
     color:'blue'
   }
   constructor(props) {
