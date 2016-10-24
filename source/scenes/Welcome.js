@@ -5,7 +5,7 @@ import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
 import Map from './Map.js';
-
+import Glenn from '../components/Button.js';
 
 export default class Welcome extends Component{
   constructor(props) {
@@ -50,6 +50,10 @@ export default class Welcome extends Component{
           UWA RideSharing
         </Text>
       </View>
+      <Glenn
+      onPress={this.onNext}>
+      Hello
+      </Glenn>
         <View style={Styles.buttonContainer}>
           <Button
             containerStyle={Styles.buttonBox}
