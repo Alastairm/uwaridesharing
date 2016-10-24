@@ -20,7 +20,6 @@ export default class Map extends React.Component {
         latitudeDelta: 0.0045,
         longitudeDelta: 0.006,
       },
-      data: "sutff should be here"
     };
     this.onNext = this.onNext.bind(this);
     this.onRegionChange = this.onRegionChange.bind(this);
@@ -74,9 +73,6 @@ export default class Map extends React.Component {
           </View>
         </View>
         <View style={{...StyleSheet.absoluteFillObject, justifyContent: 'flex-start', alignItems: 'center'}}>
-          <Text>
-            {JSON.stringify(this.state.data)}
-          </Text>
         </View>
       </View>
     );
