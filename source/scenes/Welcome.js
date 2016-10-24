@@ -51,7 +51,8 @@ export default class Welcome extends Component{
         </Text>
       </View>
       <Glenn
-      onPress={this.onNext}>
+      onPress={this.onNext}
+      backgroundColor='green'>
       Hello
       </Glenn>
         <View style={Styles.buttonContainer}>
