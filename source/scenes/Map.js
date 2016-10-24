@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, Text, View } from 'react-native';
 
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -19,10 +19,12 @@ export default class Map extends React.Component {
         longitude: 115.818650,
         latitudeDelta: 0.0045,
         longitudeDelta: 0.006,
-      }
+      },
+      data: "sutff should be here"
     };
     this.onNext = this.onNext.bind(this);
     this.onRegionChange = this.onRegionChange.bind(this);
+    this.onPlaceSelect = this.onPlaceSelect.bind(this);
   }
   onNext() {
     this.props.navigator.push({
@@ -31,6 +33,13 @@ export default class Map extends React.Component {
   }
   onRegionChange(region) {
     this.setState({region: region});
+  }
+  onPlaceSelect(data, details){
+    this.setState({data: {location: details.geometry.location}});
+    let region = this.state.region
+    region.latitude = parseFloat(details.geometry.location.lat);
+    region.longitude = parseFloat(details.geometry.location.lng);
+    this.setState({region: region})
   }
   render() {
     const { region } = this.props;
@@ -51,7 +60,7 @@ export default class Map extends React.Component {
             <TextInput
               style={{backgroundColor: '#FFFFFF'}}
               placeholder="Pickup Location"/>
-            <LocationSearch/>
+            <LocationSearch onPress={this.onPlaceSelect}/>
           </View>
           <View style={Styles.footer}>
             <View style={Styles.buttonContainer}>
@@ -64,7 +73,11 @@ export default class Map extends React.Component {
             </View>
           </View>
         </View>
-
+        <View style={{...StyleSheet.absoluteFillObject, justifyContent: 'flex-start', alignItems: 'center'}}>
+          <Text>
+            {JSON.stringify(this.state.data)}
+          </Text>
+        </View>
       </View>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import GooglePlaceAutoComplete from 'react-native-google-places-autocomplete';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 
 export default class LocationSearch extends Component {
@@ -12,10 +12,8 @@ export default class LocationSearch extends Component {
         autoFocus={false}
         listViewDisplayed='auto'    // true/false/undefined
         fetchDetails={true}
-        renderDescription={(row) => row.terms[0].value} // display street only
         onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-          console.log(data);
-          console.log(details);
+          this.props.onPress(data, details);
         }}
         getDefaultValue={() => {
           return ''; // text input default value
@@ -24,7 +22,10 @@ export default class LocationSearch extends Component {
           // available options: https://developers.google.com/places/web-service/autocomplete
           key: 'AIzaSyCvNusrMY6pA7DSPUY_eN8tHE1liuTpCN8',
           language: 'en', // language of the results
-          types: '(cities)', // default: 'geocode'
+          types: '',  // default: 'geocode'
+          location: ' -31.980101,115.818650',
+          radius: '150',
+          components: 'country:au'
         }}
         styles={{
           description: {
@@ -35,10 +36,13 @@ export default class LocationSearch extends Component {
           },
         }}
 
-        currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
+        currentLocation={false} // Will add a 'Current location' button at the top of the predefined places list
         currentLocationLabel="Current location"
         nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
         GoogleReverseGeocodingQuery={{
+          key: 'AIzaSyCvNusrMY6pA7DSPUY_eN8tHE1liuTpCN8',
+          language: 'en',
+          region: 'au',
           // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
         }}
         GooglePlacesSearchQuery={{
@@ -50,7 +54,6 @@ export default class LocationSearch extends Component {
 
         filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
 
-        predefinedPlaces={[homePlace, workPlace]}
       />
     );
   }
