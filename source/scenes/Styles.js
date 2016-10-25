@@ -47,5 +47,21 @@ export default Styles = StyleSheet.create({
   bodyText: {
     fontSize: 15,
     textAlign: 'left',
+  backgroundImage: {
+    flex: 1,
+    height: null,
+    width: null
+  },
+  welcomeTitle: {
+    fontFamily: 'coves_bold',
+    fontSize: 108,
+    color: 'navy',
+    textAlign: 'center',
+  },
+  welcomeSubtitle: {
+    fontFamily: 'coves_light',
+    fontSize: 24,
+    color: 'navy',
+    textAlign: 'center',
   }
 });

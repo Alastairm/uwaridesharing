@@ -1,11 +1,12 @@
 import React, { Component, Proptypes} from 'react';
-import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
-import Button from 'react-native-button';
+import { AsyncStorage, Image, StyleSheet, Text, View } from 'react-native';
 import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
 import Map from './Map.js';
-import Glenn from '../components/Button.js';
+import Button from '../components/Button.js';
+
+const backgroundImage = {uri: 'https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg'};
 
 export default class Welcome extends Component{
   constructor(props) {
@@ -37,33 +38,34 @@ export default class Welcome extends Component{
   render() {
     return(
       <View style={Styles.scene}>
-        <View style={Styles.buttonContainer}>
+        <Image
+        source={backgroundImage}
+        style={Styles.backgroundImage}
+        resizeMode={Image.resizeMode.sretch}>
+        <View style={Styles.scene}>
+          <View style={{alignSelf: 'center'}}>
+            <Text style={Styles.welcomeTitle}>
+              UniRide
+            </Text>
+            <Text style={Styles.welcomeSubtitle}>
+              UWA Rideshare
+            </Text>
+          </View>
           <Button
-            containerStyle={Styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
             onPress={this.onClear}>
             Clear App Data
           </Button>
-        </View>
-        <View style={{alignSelf: 'center'}}>
-        <Text>
-          UWA RideSharing
-        </Text>
-      </View>
-      <Glenn
-      onPress={this.onNext}
-      >
-      Hello
-      </Glenn>
-        <View style={Styles.buttonContainer}>
           <Button
-            containerStyle={Styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
+            onPress={this.onNext}>
+            Hello
+          </Button>
+          <Button
             onPress={this.onNext}>
             Get Started
           </Button>
-        </View>
-      </View>
+          </View>
+      </Image>
+    </View>
     );
   }
 }

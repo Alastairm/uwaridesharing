@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import Button from 'react-native-button';
+import { StyleSheet, View } from 'react-native';
+import RnButton from 'react-native-button';
 
-export default class Glenn extends Component {
+export default class Button extends Component {
   static defaultProps = {
     backgroundColor: '#faba12',
-    width:60,
-    height:70,
+    width:180,
+    height:60,
     overflow: 'hidden',
     borderRadius:4,
     fontSize:20,
-    color: 'white'
+    color: 'white',
   }
+  styles = StyleSheet.create({
+    containerStyle: {
+      flex: 1,
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width:this.props.width,
+      overflow:this.props.overflow,
+      borderRadius:this.props.borderRadius,
+      backgroundColor: this.props.backgroundColor
+    },
+    style: {
+      fontSize:this.props.fontSize,
+      color: this.props.color,
+    },
+    viewStyle: {
+      height: this.props.height,
+      alignItems: 'center'
+    },
+  })
   constructor(props) {
     super(props);
     this.handlePress = this.handlePress.bind(this);
@@ -21,14 +41,13 @@ export default class Glenn extends Component {
   }
   render(){
     return (
-      <View>
-        <Button
-        containerStyle={{width:this.props.width, height:this.props.height, overflow:this.props.overflow,
-        borderRadius:this.props.borderRadius, backgroundColor: this.props.backgroundColor}}
-        style={{fontSize:this.props.fontSize, color: this.props.color }}
+      <View style={this.styles.viewStyle}>
+        <RnButton
+        containerStyle={this.styles.containerStyle}
+        style={this.styles.style}
         onPress={this.props.onPress}>
         {this.props.children}
-        </Button>
+        </RnButton>
       </View>
     )
   }

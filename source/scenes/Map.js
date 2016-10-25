@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, Text, View } from 'react-native';
 
-import Button from 'react-native-button';
+import Button from '../components/Button.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
 
@@ -59,14 +59,11 @@ export default class Map extends React.Component {
             <LocationSearch onPress={this.onPlaceSelect}/>
           </View>
           <View style={Styles.footer}>
-            <View style={Styles.buttonContainer}>
-              <Button
-                containerStyle={Styles.buttonBox}
-                style={{fontSize: 20, color: 'white'}}
-                onPress={this.onNext}>
-                Set Pickup Location
-              </Button>
-            </View>
+            <Button
+              backgroundColor={'#0060C0'}
+              onPress={this.onNext}>
+              Set Pickup Location
+            </Button>
           </View>
         </View>
         <View style={{...StyleSheet.absoluteFillObject, justifyContent: 'flex-start', alignItems: 'center'}}>
