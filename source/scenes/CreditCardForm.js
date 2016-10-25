@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import { CreditCardInput } from "react-native-credit-card-input";
 import { customerFromCard } from '../apis/stripe.js';
+import Button from '../components/Button.js';
+
 
 secret = "sk_test_jKEt5KSdxsDccE0kqZwpJrwN"; // not sure if wise in production
 publishable = 'pk_test_ZyA7ct7H5STJYWjMUbOGTOHS'
@@ -39,6 +41,11 @@ export default class CreditCardForm extends Component {
         <Text>
           {JSON.stringify(this.state)}
         </Text>
+        <Button
+          backgroundColor={'#0060C0'}
+          onPress={this.onSubmit}>
+          Submit
+        </Button>
       </View>
     )
   }

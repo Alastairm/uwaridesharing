@@ -1,6 +1,7 @@
 import React, { Component, Proptypes} from 'react';
 import { AsyncStorage, StyleSheet, Text, TextInput, View } from 'react-native';
-import Button from 'react-native-button';
+
+import Button from '../components/Button.js';
 import UserInput from '../components/UserInput.js';
 import Map from './Map.js';
 import Styles from './Styles.js';
@@ -74,14 +75,10 @@ export default class UserForm extends Component {
           field ="phone"
           onChange={this.onChange}
           showError={this.state.showErrors}/>
-        <View style={Styles.buttonContainer}>
-          <Button
-            containerStyle={Styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
-            onPress={this.onSubmit}>
-            Submit
-          </Button>
-        </View>
+        <Button
+          onPress={this.onSubmit}>
+          Submit
+        </Button>
 
         <Text>
           {JSON.stringify(this.state.user)}
