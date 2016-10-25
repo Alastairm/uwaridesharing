@@ -1,7 +1,7 @@
 import React, { Component, Proptypes} from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
-import Button from 'react-native-button';
 
+import Button from '../components/Button.js';
 import Styles from './Styles.js';
 import Spatula from '../apis/spatula.js';
 
@@ -20,8 +20,13 @@ export default class SpatulaTest extends Component {
   }
   async submit() {
     let vendible = this.state.vendibleID;
-    let data = await this.spatula.submit(vendible);
+    let location = await this.spatula.getEndpointLocation();
+    let user = await this.spatula.getUser();
+    let data = await this.spatula.submit(vendible, location, user);
     this.setState({submit: data});
+  }
+  async confirm() {
+
   }
   render() {
     return (
@@ -35,22 +40,18 @@ export default class SpatulaTest extends Component {
         <Text>
           {JSON.stringify(this.state)}
         </Text>
-        <View style={Styles.buttonContainer}>
           <Button
-            containerStyle={Styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
             onPress={this.slug}>
-            slugVendible
+            slugVendible endpoint
           </Button>
-        </View>
-        <View style={Styles.buttonContainer}>
           <Button
-            containerStyle={Styles.buttonBox}
-            style={{fontSize: 20, color: 'white'}}
             onPress={this.submit}>
-            submit
+            submit endpoint
           </Button>
-        </View>
+          <Button
+            onPress={this.confirm}>
+            confirm endpoint
+          </Button>
       </View>
     )
   }

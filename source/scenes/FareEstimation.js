@@ -64,40 +64,20 @@ export default class FareEstimation extends Component{
     });
   }
   async spatulaSubmit() {
-    let userName = await AsyncStorage.getItem('user.name');
-    let userEmail = await AsyncStorage.getItem('user.email');
-    let userPhone = await AsyncStorage.getItem('user.phone');
-    let il8nPhone = '+61'+userPhone.slice(1);
-    let user = {
-      name: userName,
-      email: userEmail,
-      phone: il8nPhone
-    }
-    let location = {
-      name:"empty",
-      lat:null,
-      lon:null,
-      address:"empty",
-      radius:1000
-    };
-    let latitude = await AsyncStorage.getItem('endpoint.lat');
-    let longitude = await AsyncStorage.getItem('endpoint.lon')
-    location.lat = parseFloat(latitude);
-    location.lon = parseFloat(longitude);
-    let vendible = await AsyncStorage.getItem('vendible');
-    vendible = parseInt(vendible);
-    this.setState({vendible: vendible});
+    let vendible = await this.spatula.getVendible();
+    let location = await this.spatula.getEndpointLocation();
+    let user = await this.spatula.getUser();
     let data = await this.spatula.submit(vendible, location, user);
     this.updateEstimate(data.price);
-    this.setState({data: data})
     this.setState({token: data.token});
+    await AsyncStorage.setItem('spatula.confirm.token', this.state.token);
   }
   updateEstimate(price) {
     priceState = this.state.price
     priceState.total = this.processPrice(price.total.amount);
     priceState.base = this.processPrice(price.breakdown.base);
     priceState.distance = this.processPrice(price.breakdown.km);
-    priceState.distance = this.processPrice(price.breakdown.minutes);
+    priceState.time = this.processPrice(price.breakdown.minutes);
 
     this.setState(price: priceState)
   }
@@ -106,11 +86,18 @@ export default class FareEstimation extends Component{
     // e.g. [127080,4] => 12.70
     let number = String(amount[0])
     let decimal = number.length-amount[1];
-    let dollars = number.slice(0,decimal);
-    if(dollars=="") {
+    let dollars;
+    let cents;
+    if(decimal > 0) {
+      dollars = number.slice(0,decimal);
+      cents = number.slice(decimal, decimal+2);
+    }else if(decimal == 0) {
       dollars = "0"
+      cents = number.slice(decimal, decimal+2);
+    }else if (decimal < 0) {
+      dollars = "0";
+      cents = "00";
     }
-    let cents = number.slice(decimal, decimal+2);
     return dollars + '.' + cents;
   }
   onNext() {

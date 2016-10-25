@@ -1,4 +1,4 @@
-
+import { AsyncStorage } from 'react-native';
 
 const whitelabel = 'https://dev.fleeteng.com.au/v2/whitelabel/';
 const slugURI = 'Or3r9nfuypZq%2Bv2aBtx4%2F1Z9Bv4lvBmN22khbNljl04%3D'
@@ -70,6 +70,56 @@ export default class Spatula {
    }
  }
  async confirm(token, stripe) {
-
+   let slug = slugString;
+   let endpoint = 'confirm';
+   let reqBody = {
+     token: token,
+     stripe: strip
+   }
+   try{
+     let response = await fetch(whitelabel+endpoint, {
+       method: 'POST',
+       headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(reqBody)
+     });
+     let responseJson = await response.json();
+     return responseJson;
+   }catch(error) {
+     return error;
+   }
+ }
+ async getUser() {
+   let userName = await AsyncStorage.getItem('user.name');
+   let userEmail = await AsyncStorage.getItem('user.email');
+   let userPhone = await AsyncStorage.getItem('user.phone');
+   let il8nPhone = '+61'+userPhone.slice(1);
+   let user = {
+     name: userName,
+     email: userEmail,
+     phone: il8nPhone
+   }
+   return user;
+ }
+ async getEndpointLocation() {
+   let latitude = await AsyncStorage.getItem('endpoint.lat');
+   let longitude = await AsyncStorage.getItem('endpoint.lon')
+   let lat = parseFloat(latitude);
+   let lon = parseFloat(longitude);
+   let location = {
+     name:"empty",
+     lat:lat,
+     lon:lon,
+     address:"empty",
+     radius:1000
+   };
+   return location;
+ }
+ async getVendible() {
+   let vendible = await AsyncStorage.getItem('spatula.submit.vendible');
+   vendible = parseInt(vendible);
+   return vendible;
  }
 }

@@ -30,8 +30,7 @@ export default class Map extends React.Component {
   }
   async slug() {
     let data = await this.spatula.slugVendible();
-    let vendible = String(data.id)
-    await AsyncStorage.setItem('vendible', vendible);
+    await AsyncStorage.setItem('spatula.submit.vendible', String(data.id));
   }
   async onNext() {
     await this.slug();
