@@ -36,4 +36,16 @@ export default Styles = StyleSheet.create({
     height: 60,
     alignItems: 'center'
   },
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+  bodyText: {
+    fontSize: 15,
+    textAlign: 'left',
+  }
 });
