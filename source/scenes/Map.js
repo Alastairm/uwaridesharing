@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, TextInput, Text, View } from 'react-native';
 
 import Button from 'react-native-button';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
 
 import LocationSearch from '../components/LocationSearch.js'
@@ -52,13 +52,10 @@ export default class Map extends React.Component {
           onRegionChange={this.onRegionChange}
           >
         </MapView>
-        <Icon name="location" size={90} color="#900" />
+        <Icon name="map-marker" size={50} color="#0060C0" />
 
         <View style={Styles.scene}>
           <View style={Styles.header}>
-            <TextInput
-              style={{backgroundColor: '#FFFFFF'}}
-              placeholder="Pickup Location"/>
             <LocationSearch onPress={this.onPlaceSelect}/>
           </View>
           <View style={Styles.footer}>
