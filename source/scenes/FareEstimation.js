@@ -24,14 +24,22 @@ export default class FareEstimation extends Component{
         latitude: 0,
         longitude: 0
       },
-      payee: "A",
-      price: "A",
-      token: "A",
-      data: "A"
+      price:
+      {
+        total: '0.00',
+        base: '0.00',
+        distance: '0.00',
+        time: '0.00'
+      },
+      payee: "",
+      token: "",
+      data: ""
     };
     this.setUpMap = this.setUpMap.bind(this);
     this.onNext = this.onNext.bind(this);
     this.spatulaSubmit = this.spatulaSubmit.bind(this);
+    this.updateEstimate = this.updateEstimate.bind(this);
+    this.processPrice = this.processPrice.bind(this);
   }
   async componentWillMount() {
     this.setUpMap();
@@ -56,14 +64,54 @@ export default class FareEstimation extends Component{
     });
   }
   async spatulaSubmit() {
+    let userName = await AsyncStorage.getItem('user.name');
+    let userEmail = await AsyncStorage.getItem('user.email');
+    let userPhone = await AsyncStorage.getItem('user.phone');
+    let il8nPhone = '+61'+userPhone.slice(1);
+    let user = {
+      name: userName,
+      email: userEmail,
+      phone: il8nPhone
+    }
+    let location = {
+      name:"empty",
+      lat:null,
+      lon:null,
+      address:"empty",
+      radius:1000
+    };
+    let latitude = await AsyncStorage.getItem('endpoint.lat');
+    let longitude = await AsyncStorage.getItem('endpoint.lon')
+    location.lat = parseFloat(latitude);
+    location.lon = parseFloat(longitude);
     let vendible = await AsyncStorage.getItem('vendible');
     vendible = parseInt(vendible);
     this.setState({vendible: vendible});
-    let data = await this.spatula.submit(vendible);
+    let data = await this.spatula.submit(vendible, location, user);
+    this.updateEstimate(data.price);
     this.setState({data: data})
-    this.setState({payee: data.payee});
-    this.setState({price: data.price});
     this.setState({token: data.token});
+  }
+  updateEstimate(price) {
+    priceState = this.state.price
+    priceState.total = this.processPrice(price.total.amount);
+    priceState.base = this.processPrice(price.breakdown.base);
+    priceState.distance = this.processPrice(price.breakdown.km);
+    priceState.distance = this.processPrice(price.breakdown.minutes);
+
+    this.setState(price: priceState)
+  }
+  processPrice(amount) {
+    // Converts spatula amount to strings.
+    // e.g. [127080,4] => 12.70
+    let number = String(amount[0])
+    let decimal = number.length-amount[1];
+    let dollars = number.slice(0,decimal);
+    if(dollars=="") {
+      dollars = "0"
+    }
+    let cents = number.slice(decimal, decimal+2);
+    return dollars + '.' + cents;
   }
   onNext() {
     this.props.navigator.push({
@@ -88,29 +136,20 @@ export default class FareEstimation extends Component{
           </View>
           <View style={styles.footer}>
             <View style={{alignSelf: 'center'}}>
-              <Text style={Styles.bodyText}>
-                {JSON.stringify(this.state.data)}
-              </Text>
-              <Text style={Styles.bodyText}>
-                {JSON.stringify(this.state.vendible)}
-              </Text>
-              <Text style={Styles.bodyText}>
-                {JSON.stringify(this.state.token)}
-              </Text>
               <Text style={Styles.titleText}>
                 Estimated Cost
               </Text>
               <Text style={Styles.bodyText}>
-                Base Cost .................... 2.00 AUD
+                Base Cost .................... {this.state.price.base} AUD
               </Text>
               <Text style={Styles.bodyText}>
-                Distance ...................... 1.02 AUD
+                Distance ...................... {this.state.price.distance} AUD
               </Text>
               <Text style={Styles.bodyText}>
-                Time ............................ 2.32 AUD
+                Time ............................ {this.state.price.time} AUD
               </Text>
               <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'right'}}>
-                Total: 5.34 AUD
+                Total: {this.state.price.total} AUD
               </Text>
             </View>
             <Button

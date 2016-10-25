@@ -19,7 +19,7 @@ export default class Spatula {
     let responseJson = await response.json();
     return responseJson.data.vendible;
   }
-  async submit(vendible) {
+  async submit(vendible, location, user) {
    let slug = slugString;
    let endpoint = 'submit'
    let reqBody = {
@@ -27,29 +27,19 @@ export default class Spatula {
      job: {
        orderNo: "SOME STRING",
        notes: "-",
-       contact: {
-         name: "John Smith",
-         email: "john@smith.com",
-         phone: "+61828282782" // must be in i18n format
-       },
+       contact: user,
        tasks: [ // send two tasks - one for pickup, one for dropoff
          {
-           location: {
-             name: "Short Name",
-             lat: -31.27732,
-             lon: 115.999,
-             address: "Address",
-             radius: 1000
-           },
+           location: location,
            ix: 0,
            notes: "-"
          },
          {
            location: {
-             name: "Short Name",
-             lat: ""-31.27732,
-             lon: 115.999,
-             address: "Address",
+             name: "UWA",
+             lat: -31.981179,
+             lon: 115.81991,
+             address: "The University of Western Australia, 35 Stirling Hwy, Crawley WA 6009, Australia",
              radius: 1000
            },
            ix: 1,

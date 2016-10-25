@@ -38,7 +38,7 @@ export default class LocationSearch extends Component {
 
         currentLocation={false} // Will add a 'Current location' button at the top of the predefined places list
         currentLocationLabel="Current location"
-        nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
+        nearbyPlacesAPI='GoogleReverseGeocoding' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
         GoogleReverseGeocodingQuery={{
           key: 'AIzaSyCvNusrMY6pA7DSPUY_eN8tHE1liuTpCN8',
           language: 'en',
