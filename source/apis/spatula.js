@@ -41,6 +41,7 @@ export default class Spatula {
              address: "Address",
              radius: 1000
            },
+           ix: 0,
            notes: "-"
          },
          {
@@ -51,6 +52,7 @@ export default class Spatula {
              address: "Address",
              radius: 1000
            },
+           ix: 1,
            notes: "-"
          },
 

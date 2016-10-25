@@ -4,6 +4,8 @@ import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
 import Map from './Map.js';
+import SpatulaTest from './SpatulaTest.js';
+
 import Button from '../components/Button.js';
 
 const backgroundImage = {uri: 'https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg'};
@@ -32,6 +34,11 @@ export default class Welcome extends Component{
       });
     }
   }
+  onApitTest() {
+    this.props.navigator.push({
+      component: Map
+    });
+  }
   async onClear() {
     await AsyncStorage.clear();
   }
@@ -53,13 +60,15 @@ export default class Welcome extends Component{
           </View>
           <Button
             onPress={this.onNext}>
-            Hello
+            Sign In
           </Button>
           <Button
-            onPress={this.onNext}>
-            Get Started
+            backgroundColor='#303030'
+            onPress={this.onApiTest}>
+            API Test
           </Button>
           <Button
+            backgroundColor='#303030'
             onPress={this.onClear}>
             Clear App Data
           </Button>
