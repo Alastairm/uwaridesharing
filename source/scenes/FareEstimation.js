@@ -3,7 +3,7 @@ import {AppRegistry,StyleSheet,Text,View,Image } from 'react-native';
 import Button from 'react-native-button';
 import Styles from './Styles.js';
 
-
+export default class FareEstimation extends Component{
 render() {
   let locationImage = {
     uri: 'http://a3.mzstatic.com/us/r30/Purple3/v4/25/f7/4b/25f74b97-d3a2-0027-668b-6c82863d09b6/screen568x568.jpeg'};
@@ -37,3 +37,9 @@ render() {
 }
 
 };
+
+const styles = StyleSheet.create ({
+
+
+
+});
