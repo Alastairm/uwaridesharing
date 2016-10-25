@@ -101,6 +101,7 @@ export default class UserInput extends Component {
           {this.state.focused ? focusedLabel: unfocusedLabel}
         </Text>
         <TextInput
+          style={{height:80}}
           ref = {this.props.ref}
           value={this.state.text}
           onChangeText={this.onChange}
