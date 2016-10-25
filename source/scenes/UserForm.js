@@ -1,10 +1,9 @@
 import React, { Component, Proptypes} from 'react';
-import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
 import UserInput from '../components/UserInput.js';
-import Map from './Map.js'
-import Styles from './Styles.js'
-
+import Map from './Map.js';
+import Styles from './Styles.js';
 
 export default class UserForm extends Component {
   constructor(props) {
@@ -17,13 +16,16 @@ export default class UserForm extends Component {
           'phone': false,
         },
         valid: false,
-        submitted: false
+        showErrors: false
       }
     this.onNext = this.onNext.bind(this);
     this.onChange = this.onChange.bind(this);
     this.save = this.save.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  focusNextField = (nextField) => {
+    this.refs[nextField].focus();
+  };
   onNext() {
     this.props.navigator.push({
       component: Map
@@ -51,16 +53,22 @@ export default class UserForm extends Component {
       this.setState({showErrors: true})
     }
   }
+  focusNextField(nextField) {
+    this.refs[nextField].focus();
+  };
   render() {
     return (
       <View>
         <UserInput
           field ="name"
           onChange={this.onChange}
+          onNextField={this.focusNextField}
+          finalField={false}
           showError={this.state.showErrors}/>
         <UserInput
           field ="email"
           onChange={this.onChange}
+          finalField={false}
           showError={this.state.showErrors}/>
         <UserInput
           field ="phone"

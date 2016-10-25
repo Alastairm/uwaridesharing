@@ -24,7 +24,18 @@ export default class UserInput extends Component {
       name: "Please enter a valid name",
       email: "Please enter a valid @student.uwa.edu.au or @uwa.edu.au email",
       phone: "Please enter a valid Australian mobile number"
-    }
+    },
+    returnKeyTypes: {
+      name: "next",
+      email: "next",
+      phone: "done",
+    },
+    finalFields: {
+      name: false,
+      email: false,
+      phone: true
+    },
+    showError: false
   };
   static PropTypes = {
     field: PropTypes.string.isRequired,
@@ -36,14 +47,17 @@ export default class UserInput extends Component {
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   inputProps() {
-    const { field, labels, placeholders, keyboardTypes, errors } = this.props;
+    const { field, finalFields, returnKeyTypes, labels, placeholders, keyboardTypes, errors } = this.props;
     return {
       label: labels[field],
       placeholder: placeholders[field],
       keyboardType: keyboardTypes[field],
-      error: errors[field]
+      error: errors[field],
+      finalField: finalFields[field],
+      returnKeyType: returnKeyTypes[field]
     }
   }
   onChange(text) {
@@ -62,14 +76,18 @@ export default class UserInput extends Component {
     }
   }
   onFocus() {
-    const { label, placeholder, keyboardType, error } = this.inputProps();
-    this.setState({focused: true});
+    if( this.state.valid == true || this.props.showError == false){
+      this.setState({focused: true});
+    }
   }
   onBlur() {
     this.setState({focused: false});
   }
+  onSubmit() {
+    this.onBlur();
+  }
   render() {
-    const { label, placeholder, keyboardType, error } = this.inputProps();
+    const { label, placeholder, keyboardType, error, returnKeyType } = this.inputProps();
     var focusedLabel = label;
     var unfocusedLabel;
     if ( this.props.showError == true && this.state.valid == false) {
@@ -83,12 +101,15 @@ export default class UserInput extends Component {
           {this.state.focused ? focusedLabel: unfocusedLabel}
         </Text>
         <TextInput
+          ref = {this.props.ref}
           value={this.state.text}
           onChangeText={this.onChange}
           keyboardType={keyboardType}
           placeholder={(this.state.focused ? " ": placeholder)}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onSubmitEditing={this.onSubmit}
+          returnKeyType={returnKeyType}
         />
       </View>
     );

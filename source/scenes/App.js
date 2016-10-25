@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image, Navigator, StyleSheet, View } from 'react-native';
 
 import Welcome from './Welcome.js'
+import SpatulaTest from './SpatulaTest.js';
 
 const styles = StyleSheet.create({
   container: {
