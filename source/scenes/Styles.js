@@ -47,6 +47,7 @@ export default Styles = StyleSheet.create({
   bodyText: {
     fontSize: 15,
     textAlign: 'left',
+  },
   backgroundImage: {
     flex: 1,
     height: null,
