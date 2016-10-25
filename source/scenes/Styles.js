@@ -40,6 +40,7 @@ export default Styles = StyleSheet.create({
     fontFamily: 'Cochin',
   },
   titleText: {
+    fontFamily: 'Cochin',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'left',

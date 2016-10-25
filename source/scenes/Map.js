@@ -7,8 +7,8 @@ import MapView from 'react-native-maps';
 
 import LocationSearch from '../components/LocationSearch.js'
 import Styles from './Styles.js';
-import CreditCardForm from './CreditCardForm';
 
+import FareEstimation from './FareEstimation.js';
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class Map extends React.Component {
   }
   onNext() {
     this.props.navigator.push({
-      component: CreditCardForm
+      component: FareEstimation
     });
   }
   onRegionChange(region) {
@@ -53,7 +53,6 @@ export default class Map extends React.Component {
           >
         </MapView>
         <Icon name="map-marker" size={50} color="#0060C0" />
-
         <View style={Styles.scene}>
           <View style={Styles.header}>
             <LocationSearch onPress={this.onPlaceSelect}/>
@@ -65,8 +64,6 @@ export default class Map extends React.Component {
               Set Pickup Location
             </Button>
           </View>
-        </View>
-        <View style={{...StyleSheet.absoluteFillObject, justifyContent: 'flex-start', alignItems: 'center'}}>
         </View>
       </View>
     );
