@@ -4,6 +4,7 @@ import { CreditCardInput } from "react-native-credit-card-input";
 import { customerFromCard } from '../apis/stripe.js';
 import Button from '../components/Button.js';
 
+import FareEstimation from './FareEstimation.js';
 
 secret = "sk_test_jKEt5KSdxsDccE0kqZwpJrwN"; // not sure if wise in production
 publishable = 'pk_test_ZyA7ct7H5STJYWjMUbOGTOHS'
@@ -13,8 +14,11 @@ export default class CreditCardForm extends Component {
     super(props);
     this.state = {
       form: "",
+      error: "",
     };
     this.onChange = this.onChange.bind(this);
+    this.onNext = this.onNext.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   async onChange(form) {
     this.setState({form: form})
@@ -31,6 +35,18 @@ export default class CreditCardForm extends Component {
       await AsyncStorage.setItem('payment.custid', customer.id);
     }
   }
+  onNext() {
+    this.props.navigator.push({
+      component: FareEstimation
+    });
+  }
+  onSubmit() {
+    if( this.state.form.valid) {
+      this.onNext()
+    }else {
+      this.setState({error: "Please check your credit card details are correct"})
+    }
+  }
   render() {
     return (
       <View>
@@ -39,7 +55,7 @@ export default class CreditCardForm extends Component {
           onChange={this.onChange}
         />
         <Text>
-          {JSON.stringify(this.state)}
+          {this.state.error}
         </Text>
         <Button
           backgroundColor={'#0060C0'}
