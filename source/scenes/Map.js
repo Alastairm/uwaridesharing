@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, Text, View } from 'react-native';
+import { AsyncStorage, StyleSheet, TextInput, Text, View } from 'react-native';
 
 import Button from '../components/Button.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -25,7 +25,9 @@ export default class Map extends React.Component {
     this.onRegionChange = this.onRegionChange.bind(this);
     this.onPlaceSelect = this.onPlaceSelect.bind(this);
   }
-  onNext() {
+  async onNext() {
+    await AsyncStorage.setItem('endpoint.lat', String(this.state.region.latitude));
+    await AsyncStorage.setItem('endpoint.lon', String(this.state.region.longitude));
     this.props.navigator.push({
       component: FareEstimation
     });

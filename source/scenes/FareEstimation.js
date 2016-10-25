@@ -1,24 +1,43 @@
 import React, { Component, Proptypes} from 'react';
-import {AppRegistry,StyleSheet,Text,View,Image } from 'react-native';
+import { AsyncStorage, StyleSheet,Text,View,Image } from 'react-native';
 import MapView from 'react-native-maps';
 import Button from '../components/Button.js';
 
 import Styles from './Styles.js';
 
 import CreditCardForm from './CreditCardForm.js';
+const uwaLoc = {latitude:-31.981179, longitude:115.81991}
+
 
 export default class FareEstimation extends Component{
   constructor(props) {
     super(props);
     this.state = {
       region: {
-        latitude: -31.980101,
-        longitude: 115.818650,
+        latitude: -31.981179,
+        longitude: 115.81991,
         latitudeDelta: 0.0045,
         longitudeDelta: 0.006,
       },
+      centerLat: "",
+      centerLon: "",
     };
     this.onNext = this.onNext.bind(this);
+  }
+  componentWillMount() {
+    var region = this.state.region;
+    var endpoint = {latitude: 0, longitude: 0};
+    AsyncStorage.getItem('endpoint.lat').then((lat) => {
+      endpoint.latitude = parseFloat(lat);
+      region.latitude = uwaLoc.latitude-(uwaLoc.latitude-endpoint.latitude)/2
+      this.setState({centerLat:String(region.latitude)});
+    });
+    AsyncStorage.getItem('endpoint.lon').then((lon) => {
+      endpoint.longitude = parseFloat(lon);
+      region.longitude = uwaLoc.longitude-(uwaLoc.longitude-endpoint.longitude)/2
+      this.setState({centerLon:String(region.longitude)});
+      this.setState({region: region});
+    });
   }
   onNext() {
     this.props.navigator.push({
@@ -55,7 +74,12 @@ export default class FareEstimation extends Component{
               <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'right'}}>
                 Total: 5.34 AUD
               </Text>
-
+              <Text>
+                {this.state.centerLat}
+              </Text>
+              <Text>
+                {this.state.centerLon}
+              </Text>
               </View>
               <Button
                 onPress={this.onNext}>
