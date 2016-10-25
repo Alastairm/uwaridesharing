@@ -5,6 +5,7 @@ import Button from '../components/Button.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
 
+import Spatula from '../apis/spatula.js';
 import LocationSearch from '../components/LocationSearch.js'
 import Styles from './Styles.js';
 
@@ -13,6 +14,7 @@ import FareEstimation from './FareEstimation.js';
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
+    this.spatula = new Spatula();
     this.state = {
       region: {
         latitude: -31.980101,
@@ -23,9 +25,16 @@ export default class Map extends React.Component {
     };
     this.onNext = this.onNext.bind(this);
     this.onRegionChange = this.onRegionChange.bind(this);
-    this.onPlaceSelect = this.onPlaceSelect.bind(this);
+    this.onLocationSeach = this.onLocationSeach.bind(this);
+    this.slug = this.slug.bind(this);
+  }
+  async slug() {
+    let data = await this.spatula.slugVendible();
+    let vendible = String(data.id)
+    await AsyncStorage.setItem('vendible', vendible);
   }
   async onNext() {
+    await this.slug();
     await AsyncStorage.setItem('endpoint.lat', String(this.state.region.latitude));
     await AsyncStorage.setItem('endpoint.lon', String(this.state.region.longitude));
     this.props.navigator.push({
@@ -35,7 +44,7 @@ export default class Map extends React.Component {
   onRegionChange(region) {
     this.setState({region: region});
   }
-  onPlaceSelect(data, details){
+  onLocationSeach(data, details){
     this.setState({data: {location: details.geometry.location}});
     let region = this.state.region
     region.latitude = parseFloat(details.geometry.location.lat);
@@ -57,7 +66,7 @@ export default class Map extends React.Component {
         <Icon name="map-marker" size={50} color="#0060C0" />
         <View style={Styles.scene}>
           <View style={Styles.header}>
-            <LocationSearch onPress={this.onPlaceSelect}/>
+            <LocationSearch onPress={this.onLocationSeach}/>
           </View>
           <View style={Styles.footer}>
             <Button

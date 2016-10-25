@@ -15,6 +15,7 @@ export default class Welcome extends Component{
     super(props);
     this.onNext = this.onNext.bind(this);
     this.onClear = this.onClear.bind(this);
+    this.onApiTest = this.onApiTest.bind(this);
   }
   async onNext() {
     try{
@@ -34,9 +35,9 @@ export default class Welcome extends Component{
       });
     }
   }
-  onApitTest() {
+  onApiTest() {
     this.props.navigator.push({
-      component: Map
+      component: SpatulaTest
     });
   }
   async onClear() {

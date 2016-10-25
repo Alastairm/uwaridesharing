@@ -1,8 +1,8 @@
 
 
 const whitelabel = 'https://dev.fleeteng.com.au/v2/whitelabel/';
-const testSlug = 'Or3r9nfuypZq%2Bv2aBtx4%2F1Z9Bv4lvBmN22khbNljl04%3D'
-
+const slugURI = 'Or3r9nfuypZq%2Bv2aBtx4%2F1Z9Bv4lvBmN22khbNljl04%3D'
+const slugString = 'Or3r9nfuypZq+v2aBtx4/1Z9Bv4lvBmN22khbNljl04='
 
 export default class Spatula {
   constructor() {
@@ -11,7 +11,7 @@ export default class Spatula {
     this.confirm = this.confirm.bind(this);
   }
   async slugVendible() {
-    let slug = testSlug;
+    let slug = slugURI;
     let endpoint = 'slug-vendible';
     let reqStart = '?json=%7B"slug"%3A"';
     let reqEnd = '"%7D';
@@ -20,7 +20,7 @@ export default class Spatula {
     return responseJson.data.vendible;
   }
   async submit(vendible) {
-   let slug = testSlug;
+   let slug = slugString;
    let endpoint = 'submit'
    let reqBody = {
      slug: slug,
@@ -68,8 +68,13 @@ export default class Spatula {
        },
        body: JSON.stringify(reqBody)
      });
-     let responseJson = response.json();
-     return responseJson;
+     let responseJson = await response.json();
+     let returnData = await {
+       payee: responseJson.data.payee,
+       price: responseJson.data.price,
+       token: responseJson.data.token,
+     }
+     return returnData;
    }catch(error) {
      return error;
    }

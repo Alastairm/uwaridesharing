@@ -5,13 +5,13 @@ import Button from 'react-native-button';
 import Styles from './Styles.js';
 import Spatula from '../apis/spatula.js';
 
-export default class FareEstimate extends Component {
+export default class SpatulaTest extends Component {
   constructor(props) {
     super(props);
     this.spatula = new Spatula();
     this.slug = this.slug.bind(this);
     this.submit = this.submit.bind(this);
-    this.state = {vendible: {id:'123'}}
+    this.state = {vendible: {id:'123'}, submit: ""}
   }
   async slug() {
     let data = await this.spatula.slugVendible();
@@ -27,13 +27,13 @@ export default class FareEstimate extends Component {
     return (
       <View style={Styles.scene}>
         <Text>
-          {JSON.stringify(this.state)}
-        </Text>
-        <Text>
           {JSON.stringify(this.state.vendible)}
         </Text>
         <Text>
-          {JSON.stringify(this.state.vendible.id)}
+          {JSON.stringify(this.state.submit)}
+        </Text>
+        <Text>
+          {JSON.stringify(this.state)}
         </Text>
         <View style={Styles.buttonContainer}>
           <Button
