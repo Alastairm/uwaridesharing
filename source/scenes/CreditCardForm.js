@@ -29,10 +29,6 @@ export default class CreditCardForm extends Component {
       exp_month = expiry[0];
       exp_year = expiry[1];
       cvc = form.values.cvc
-
-      let customer = await customerFromCard(number, exp_month, exp_year, cvc);
-      await AsyncStorage.setItem('payment.saved', 'true');
-      await AsyncStorage.setItem('payment.custid', customer.id);
     }
   }
   onNext() {
