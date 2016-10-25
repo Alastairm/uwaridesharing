@@ -4,10 +4,8 @@ import { CreditCardInput } from "react-native-credit-card-input";
 import { customerFromCard } from '../apis/stripe.js';
 import Button from '../components/Button.js';
 
-import FareEstimation from './FareEstimation.js';
+import Driverontheway from './Dotw.js';
 
-secret = "sk_test_jKEt5KSdxsDccE0kqZwpJrwN"; // not sure if wise in production
-publishable = 'pk_test_ZyA7ct7H5STJYWjMUbOGTOHS'
 
 export default class CreditCardForm extends Component {
   constructor(props) {
@@ -33,7 +31,7 @@ export default class CreditCardForm extends Component {
   }
   onNext() {
     this.props.navigator.push({
-      component: FareEstimation
+      component: Driverontheway
     });
   }
   onSubmit() {

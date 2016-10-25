@@ -52,16 +52,16 @@ export default class Welcome extends Component{
             </Text>
           </View>
           <Button
-            onPress={this.onClear}>
-            Clear App Data
-          </Button>
-          <Button
             onPress={this.onNext}>
             Hello
           </Button>
           <Button
             onPress={this.onNext}>
             Get Started
+          </Button>
+          <Button
+            onPress={this.onClear}>
+            Clear App Data
           </Button>
           </View>
       </Image>
