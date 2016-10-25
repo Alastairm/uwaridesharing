@@ -16,7 +16,9 @@ exports[`test Email field matches previous snapshot 1`] = `
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
+    onSubmitEditing={[Function]}
     placeholder="Email"
+    returnKeyType="next"
     value="" />
 </View>
 `;
@@ -39,7 +41,9 @@ exports[`test Name field matches previous snapshot 1`] = `
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
+    onSubmitEditing={[Function]}
     placeholder="Name"
+    returnKeyType="next"
     value="" />
 </View>
 `;
@@ -62,7 +66,9 @@ exports[`test Phone field matches previous snapshot 1`] = `
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
+    onSubmitEditing={[Function]}
     placeholder="Mobile"
+    returnKeyType="done"
     value="" />
 </View>
 `;
