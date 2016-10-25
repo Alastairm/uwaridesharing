@@ -7,7 +7,7 @@ import Styles from './Styles.js';
 
 import CreditCardForm from './CreditCardForm.js';
 const uwaLoc = {latitude:-31.981179, longitude:115.81991}
-
+const defaultZoom = {latitudeDelta: 0.0045, longitudeDelta: 0.006}
 
 export default class FareEstimation extends Component{
   constructor(props) {
@@ -16,8 +16,12 @@ export default class FareEstimation extends Component{
       region: {
         latitude: -31.981179,
         longitude: 115.81991,
-        latitudeDelta: 0.0045,
-        longitudeDelta: 0.006,
+        latitudeDelta: defaultZoom.latitudeDelta,
+        longitudeDelta: defaultZoom.longitudeDelta,
+      },
+      endpoint: {
+        latitude: 0,
+        longitude: 0
       },
       centerLat: "",
       centerLon: "",
@@ -29,13 +33,16 @@ export default class FareEstimation extends Component{
     var endpoint = {latitude: 0, longitude: 0};
     AsyncStorage.getItem('endpoint.lat').then((lat) => {
       endpoint.latitude = parseFloat(lat);
-      region.latitude = uwaLoc.latitude-(uwaLoc.latitude-endpoint.latitude)/2
-      this.setState({centerLat:String(region.latitude)});
+      let latitudeDelta = uwaLoc.latitude-endpoint.latitude;
+      region.latitude = uwaLoc.latitude-(latitudeDelta)/2;
+      region.latitudeDelta = Math.abs(latitudeDelta)*2;
     });
     AsyncStorage.getItem('endpoint.lon').then((lon) => {
       endpoint.longitude = parseFloat(lon);
-      region.longitude = uwaLoc.longitude-(uwaLoc.longitude-endpoint.longitude)/2
-      this.setState({centerLon:String(region.longitude)});
+      let longitudeDelta = uwaLoc.longitude - endpoint.longitude;
+      region.longitude = uwaLoc.longitude-(longitudeDelta)/2;
+      region.longitudeDelta = Math.abs(longitudeDelta)*2;
+      this.setState({endpoint: endpoint});
       this.setState({region: region});
     });
   }
@@ -51,8 +58,12 @@ export default class FareEstimation extends Component{
       <View style={Styles.mapScene}>
         <MapView
           style={{...StyleSheet.absoluteFillObject}}
-          region={this.state.region}
-        />
+          region={this.state.region}>
+          <MapView.Marker
+            coordinate={uwaLoc}/>
+          <MapView.Marker
+            coordinate={this.state.endpoint}/>
+        </MapView>
         <View style={Styles.scene}>
           <View style={Styles.header}>
           </View>
@@ -73,12 +84,6 @@ export default class FareEstimation extends Component{
               </Text>
               <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'right'}}>
                 Total: 5.34 AUD
-              </Text>
-              <Text>
-                {this.state.centerLat}
-              </Text>
-              <Text>
-                {this.state.centerLon}
               </Text>
               </View>
               <Button
