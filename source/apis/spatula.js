@@ -74,7 +74,7 @@ export default class Spatula {
    let endpoint = 'confirm';
    let reqBody = {
      token: token,
-     stripe: strip
+     stripe: stripe
    }
    try{
      let response = await fetch(whitelabel+endpoint, {
