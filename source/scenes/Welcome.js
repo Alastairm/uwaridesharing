@@ -21,7 +21,6 @@ export default class Welcome extends Component {
   constructor(props) {
     super(props);
     this.onNext = this.onNext.bind(this);
-    this.onClear = this.onClear.bind(this);
     this.onApiTest = this.onApiTest.bind(this);
   }
   async onNext() {
@@ -41,9 +40,6 @@ export default class Welcome extends Component {
         component: UserForm,
       });
     }
-  }
-  onClear() {
-    AsyncStorage.clear();
   }
   onApiTest() {
     this.props.navigator.push({
@@ -78,7 +74,7 @@ export default class Welcome extends Component {
             </Button>
             <Button
               backgroundColor="#303030"
-              onPress={this.onClear}
+              onPress={AsyncStorage.clear()}
             >
               Clear App Data
             </Button>

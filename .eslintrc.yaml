@@ -8,3 +8,4 @@ extends:
 rules:
   import/extensions: 0
   react/jsx-filename-extension: 0
+  radix: 0

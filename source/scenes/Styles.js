@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export default Styles = StyleSheet.create({
+const Styles = StyleSheet.create({
   scene: {
     ...StyleSheet.absoluteFillObject,
     flexDirection: 'column',
@@ -23,18 +23,19 @@ export default Styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonBox: {
-    padding:10,
-    height:45,
-    width:320,
-    overflow:'hidden',
-    borderRadius:4,
-    backgroundColor: 'steelblue'},
+    padding: 10,
+    height: 45,
+    width: 320,
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: 'steelblue',
+  },
   buttonContainer: {
     height: 60,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   baseText: {
     fontFamily: 'Cochin',
@@ -52,7 +53,7 @@ export default Styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     height: null,
-    width: null
+    width: null,
   },
   welcomeTitle: {
     fontSize: 108,
@@ -63,5 +64,7 @@ export default Styles = StyleSheet.create({
     fontSize: 24,
     color: 'navy',
     textAlign: 'center',
-  }
+  },
 });
+
+export default Styles;

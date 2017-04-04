@@ -33,14 +33,56 @@ export default class UserInput extends Component {
       email: 'next',
       phone: 'done',
     },
+    refs: {
+      name: '1',
+      email: '2',
+      phone: '3',
+    },
     finalFields: {
       name: false,
       email: false,
       phone: true,
     },
   };
-  static PropTypes = {
+  static propTypes = {
     field: PropTypes.string.isRequired,
+    finalFields: PropTypes.shape({
+      name: PropTypes.bool,
+      email: PropTypes.bool,
+      phone: PropTypes.bool,
+    }),
+    errors: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      phone: PropTypes.string,
+    }),
+    labels: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      phone: PropTypes.string,
+    }),
+    keyboardTypes: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      phone: PropTypes.string,
+    }),
+    placeholders: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      phone: PropTypes.string,
+    }),
+    returnKeyTypes: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      phone: PropTypes.string,
+    }),
+    refs: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      phone: PropTypes.string,
+    }),
+    onChange: PropTypes.func.isRequired,
+    showError: PropTypes.bool,
   };
   constructor(props) {
     super(props);
@@ -52,34 +94,35 @@ export default class UserInput extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   onChange(text) {
-    let valid = this.validate(text);
+    const valid = this.validate(text);
     this.props.onChange(this.props.field, valid, text);
-    this.setState({text: text});
-    this.setState({valid: valid});
-  }
-  validate(text) {
-    if (this.props.field == 'name') {
-      return (nameRegex.test(text) ? true: false);
-    }else if (this.props.field == 'email') {
-      return (emailRegex.test(text) ? true: false);
-    }else if (this.props.field == 'phone') {
-      return (phoneRegex.test(text) ? true: false);
-    }
+    this.setState({ text });
+    this.setState({ valid });
   }
   onFocus() {
-    if( this.state.valid == true || this.props.showError == false){
-      this.setState({focused: true});
+    if (this.state.valid === true || this.props.showError === false) {
+      this.setState({ focused: true });
     }
   }
   onBlur() {
-    this.setState({focused: false});
+    this.setState({ focused: false });
   }
   onSubmit() {
     this.onBlur();
   }
+  validate(text) {
+    if (this.props.field === 'name') {
+      return nameRegex.test(text);
+    } else if (this.props.field === 'email') {
+      return emailRegex.test(text);
+    } else if (this.props.field === 'phone') {
+      return phoneRegex.test(text);
+    }
+    return null;
+  }
   inputProps() {
     const { field, finalFields, returnKeyTypes, labels,
-      placeholders, keyboardTypes, errors } = this.props;
+      placeholders, keyboardTypes, errors, refs } = this.props;
     return {
       label: labels[field],
       placeholder: placeholders[field],
@@ -87,10 +130,11 @@ export default class UserInput extends Component {
       error: errors[field],
       finalField: finalFields[field],
       returnKeyType: returnKeyTypes[field],
+      ref: refs[field],
     };
   }
   render() {
-    const { label, placeholder, keyboardType, error, returnKeyType } = this.inputProps();
+    const { label, placeholder, keyboardType, error, returnKeyType, ref } = this.inputProps();
     const focusedLabel = label;
     let unfocusedLabel;
     if (this.props.showError === true && this.state.valid === false) {
@@ -105,11 +149,11 @@ export default class UserInput extends Component {
         </Text>
         <TextInput
           style={{ height: 80 }}
-          ref = {this.props.ref}
+          ref={ref}
           value={this.state.text}
           onChangeText={this.onChange}
           keyboardType={keyboardType}
-          placeholder={(this.state.focused ? ' ': placeholder)}
+          placeholder={(this.state.focused ? ' ' : placeholder)}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onSubmitEditing={this.onSubmit}

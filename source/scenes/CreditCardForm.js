@@ -2,7 +2,7 @@ import React, { Component, Proptypes } from 'react';
 import { Text, View } from 'react-native';
 import { CreditCardInput } from 'react-native-credit-card-input';
 // import { customerFromCard } from '../apis/stripe.js';
-import Button from '../components/Button.js';
+import Button from 'native-base';
 
 import Driverontheway from './Dotw.js';
 
