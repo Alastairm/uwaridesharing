@@ -1,4 +1,6 @@
-exports[`test Email field matches previous snapshot 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Email field matches previous snapshot 1`] = `
 <View>
   <Text
     accessible={true}
@@ -8,7 +10,8 @@ exports[`test Email field matches previous snapshot 1`] = `
       Object {
         "fontSize": 10,
       }
-    }>
+    }
+  >
      
   </Text>
   <TextInput
@@ -19,11 +22,17 @@ exports[`test Email field matches previous snapshot 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Email"
     returnKeyType="next"
-    value="" />
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+    value=""
+  />
 </View>
 `;
 
-exports[`test Name field matches previous snapshot 1`] = `
+exports[`Name field matches previous snapshot 1`] = `
 <View>
   <Text
     accessible={true}
@@ -33,7 +42,8 @@ exports[`test Name field matches previous snapshot 1`] = `
       Object {
         "fontSize": 10,
       }
-    }>
+    }
+  >
      
   </Text>
   <TextInput
@@ -44,11 +54,17 @@ exports[`test Name field matches previous snapshot 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Name"
     returnKeyType="next"
-    value="" />
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+    value=""
+  />
 </View>
 `;
 
-exports[`test Phone field matches previous snapshot 1`] = `
+exports[`Phone field matches previous snapshot 1`] = `
 <View>
   <Text
     accessible={true}
@@ -58,7 +74,8 @@ exports[`test Phone field matches previous snapshot 1`] = `
       Object {
         "fontSize": 10,
       }
-    }>
+    }
+  >
      
   </Text>
   <TextInput
@@ -69,6 +86,12 @@ exports[`test Phone field matches previous snapshot 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Mobile"
     returnKeyType="done"
-    value="" />
+    style={
+      Object {
+        "height": 80,
+      }
+    }
+    value=""
+  />
 </View>
 `;

@@ -1,2 +1,0 @@
-# UWA Ridesharing app
-#

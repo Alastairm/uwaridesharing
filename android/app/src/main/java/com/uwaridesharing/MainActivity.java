@@ -1,4 +1,4 @@
-package com.ridesharing;
+package com.uwaridesharing;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "ridesharing";
+        return "uwaridesharing";
     }
 }

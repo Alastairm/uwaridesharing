@@ -1,0 +1,357 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "flex": 1,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      onStartShouldSetResponderCapture={[Function]}
+      pointerEvents="auto"
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+              Object {
+                "translateY": 0,
+              },
+              Object {
+                "scaleX": 1,
+              },
+              Object {
+                "scaleY": 1,
+              },
+              Object {
+                "rotate": "0deg",
+              },
+              Object {
+                "skewX": "0deg",
+              },
+              Object {
+                "skewY": "0deg",
+              },
+            ],
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "bottom": 0,
+            "flexDirection": "column",
+            "justifyContent": "space-between",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <Image
+          resizeMode={undefined}
+          source={
+            Object {
+              "uri": "https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg",
+            }
+          }
+          style={
+            Object {
+              "flex": 1,
+              "height": null,
+              "width": null,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "bottom": 0,
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignSelf": "center",
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "navy",
+                    "fontSize": 108,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                UniRide
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "navy",
+                    "fontSize": 24,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                UWA Rideshare
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "height": 60,
+                }
+              }
+            >
+              <View
+                accessibilityComponentType="button"
+                accessibilityLabel={undefined}
+                accessibilityTraits="button"
+                accessible={true}
+                hitSlop={undefined}
+                isTVSelectable={true}
+                onLayout={undefined}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#faba12",
+                    "borderRadius": 4,
+                    "flex": 1,
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "width": 180,
+                  }
+                }
+                testID={undefined}
+                tvParallaxProperties={undefined}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#007aff",
+                        "fontSize": 17,
+                        "fontWeight": "500",
+                        "textAlign": "center",
+                      },
+                      null,
+                      Object {
+                        "color": "white",
+                        "fontSize": 20,
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  Sign In
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "height": 60,
+                }
+              }
+            >
+              <View
+                accessibilityComponentType="button"
+                accessibilityLabel={undefined}
+                accessibilityTraits="button"
+                accessible={true}
+                hitSlop={undefined}
+                isTVSelectable={true}
+                onLayout={undefined}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#303030",
+                    "borderRadius": 4,
+                    "flex": 1,
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "width": 180,
+                  }
+                }
+                testID={undefined}
+                tvParallaxProperties={undefined}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#007aff",
+                        "fontSize": 17,
+                        "fontWeight": "500",
+                        "textAlign": "center",
+                      },
+                      null,
+                      Object {
+                        "color": "white",
+                        "fontSize": 20,
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  API Test
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "height": 60,
+                }
+              }
+            >
+              <View
+                accessibilityComponentType="button"
+                accessibilityLabel={undefined}
+                accessibilityTraits="button"
+                accessible={true}
+                hitSlop={undefined}
+                isTVSelectable={true}
+                onLayout={undefined}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#303030",
+                    "borderRadius": 4,
+                    "flex": 1,
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "width": 180,
+                  }
+                }
+                testID={undefined}
+                tvParallaxProperties={undefined}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#007aff",
+                        "fontSize": 17,
+                        "fontWeight": "500",
+                        "textAlign": "center",
+                      },
+                      null,
+                      Object {
+                        "color": "white",
+                        "fontSize": 20,
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  Clear App Data
+                </Text>
+              </View>
+            </View>
+          </View>
+        </Image>
+      </View>
+    </View>
+  </View>
+</View>
+`;

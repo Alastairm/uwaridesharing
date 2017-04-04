@@ -10,4 +10,4 @@ class ridesharing extends Component {
   }
 }
 
-AppRegistry.registerComponent('ridesharing', () => ridesharing);
+AppRegistry.registerComponent('uwaridesharing', () => ridesharing);
