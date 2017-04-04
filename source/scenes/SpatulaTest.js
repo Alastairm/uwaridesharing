@@ -3,14 +3,13 @@ import { Text, View } from 'react-native';
 
 import Button from 'native-base';
 import Styles from './Styles.js';
-import Spatula from '../apis/spatula.js';
-import Stripe from '../apis/stripe.js';
+import { SpatulaVendible, SpatulaSubmit, SpatulaConfirm,
+         SpatulaUser, SpatulaEndpointLocation } from '../apis/spatula.js';
+import StripeToken from '../apis/stripe.js';
 
 export default class SpatulaTest extends Component {
   constructor(props) {
     super(props);
-    this.spatula = new Spatula();
-    this.stripe = new Stripe();
     this.slug = this.slug.bind(this);
     this.submit = this.submit.bind(this);
     this.confirm = this.confirm.bind(this);
@@ -23,15 +22,15 @@ export default class SpatulaTest extends Component {
     };
   }
   async slug() {
-    const data = await this.spatula.slugVendible();
+    const data = await SpatulaVendible();
     this.setState({ vendible: data });
     this.setState({ vendibleID: data.id });
   }
   async submit() {
     const vendible = this.state.vendibleID;
-    const location = await this.spatula.getEndpointLocation();
-    const user = await this.spatula.getUser();
-    const data = await this.spatula.submit(vendible, location, user);
+    const location = await SpatulaEndpointLocation();
+    const user = await SpatulaUser();
+    const data = await SpatulaSubmit(vendible, location, user);
     this.setState({ submit: data });
   }
   async confirm() {
@@ -41,10 +40,10 @@ export default class SpatulaTest extends Component {
       exp_year: 17,
       cvc: 123,
     };
-    const stripe = await this.stripe.token(CC.number, CC.exp_month, CC.exp_year, CC.cvc);
+    const stripe = await StripeToken(CC.number, CC.exp_month, CC.exp_year, CC.cvc);
     this.setState({ stripe });
     const token = this.state.submit.token;
-    const data = await this.spatula.confirm(token, stripe.id);
+    const data = await SpatulaConfirm(token, stripe.id);
     this.setState({ confirm: data });
   }
   render() {

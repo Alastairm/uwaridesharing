@@ -8,6 +8,7 @@ const phoneRegex = /04[0-9]{8}$/;
 export default class UserInput extends Component {
   static defaultProps = {
     showError: false,
+    onChange: 'null',
     labels: {
       name: 'NAME',
       email: 'EMAIL',
@@ -81,7 +82,8 @@ export default class UserInput extends Component {
       email: PropTypes.string,
       phone: PropTypes.string,
     }),
-    onChange: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    onChange: PropTypes.any,
     showError: PropTypes.bool,
   };
   constructor(props) {

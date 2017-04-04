@@ -1,13 +1,11 @@
- import React, { Component } from 'react';
- import { AppRegistry } from 'react-native';
- import App from './source/scenes/App';
+import React from 'react';
+import { AppRegistry } from 'react-native';
+import App from './source/scenes/App';
 
- class ridesharing extends Component {
-   render() {
-     return (
-       <App/>
-     );
-   }
- }
+function ridesharing() {
+  return (
+    <App />
+  );
+}
 
- AppRegistry.registerComponent('uwaridesharing', () => ridesharing);
+AppRegistry.registerComponent('uwaridesharing', () => ridesharing);

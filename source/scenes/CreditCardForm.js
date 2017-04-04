@@ -10,9 +10,7 @@ import Driverontheway from './Dotw.js';
 export default class CreditCardForm extends Component {
   static get propTypes() {
     return {
-      navigator: Proptypes.shape({
-        push: Proptypes.object,
-      }).isRequired,
+      navigator: Proptypes.Any.isRequired,
     };
   }
   constructor(props) {

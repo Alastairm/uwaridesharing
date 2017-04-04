@@ -1,42 +1,35 @@
-const publishable = 'pk_test_YgwAdlhUwsQcHGAiHRCAyh7H'
+const publishable = 'pk_test_YgwAdlhUwsQcHGAiHRCAyh7H';
 
 
-
-export default class Stripe {
-  constructor(){
-    this.token = this.token.bind(this);
-    this.customer = this.customer.bind(this);
+export default async function StripeToken(number, expMonth, expYear, cvc) {
+  const source = {
+    'card[number]': number,
+    'card[exp_month]': expMonth,
+    'card[exp_year]': expYear,
+    'card[cvc]': cvc,
+  };
+  let reqBody = [];
+  // eslint-disable-next-line no-restricted-syntax, guard-for-in
+  for (const property in source) {
+    const encodedKey = encodeURIComponent(property);
+    const encodedValue = encodeURIComponent(source[property]);
+    reqBody.push(`${encodedKey}=${encodedValue}`);
   }
-  async token( number, exp_month, exp_year, cvc) {
-    var source = {
-      "card[number]": number,
-      "card[exp_month]": exp_month,
-      "card[exp_year]": exp_year,
-      "card[cvc]": cvc
-    }
+  reqBody = reqBody.join('&');
 
-    var reqBody = [];
-    for (var property in source) {
-      var encodedKey = encodeURIComponent(property);
-      var encodedValue = encodeURIComponent(source[property]);
-      reqBody.push(encodedKey + "=" + encodedValue);
-    }
-    reqBody = reqBody.join("&");
-
-    try {
-      let response = await fetch('https://api.stripe.com/v1/tokens', {
-        method: 'POST',
-        headers: {
-          'Accept': '*/*',
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Bearer '+ publishable
-        },
-        body: reqBody
-      })
-      var responseJson = await response.json();
-      return responseJson;
-    } catch(error) {
-      return error;
-    }
+  try {
+    const response = await fetch('https://api.stripe.com/v1/tokens', {
+      method: 'POST',
+      headers: {
+        Accept: '*/*',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${publishable}`,
+      },
+      body: reqBody,
+    });
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    return error;
   }
 }

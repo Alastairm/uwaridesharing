@@ -8,9 +8,7 @@ import Map from './Map.js';
 export default class UserForm extends Component {
   static get propTypes() {
     return {
-      navigator: Proptypes.shape({
-        push: Proptypes.object,
-      }).isRequired,
+      navigator: Proptypes.Object.isRequired,
     };
   }
   constructor(props) {

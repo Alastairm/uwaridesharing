@@ -1,6 +1,7 @@
-import React, { Component, Proptypes } from 'react';
+import React, { Component } from 'react';
 import { AsyncStorage, Image, Text, View } from 'react-native';
-import { Button } from 'native-base';
+import { Button, Content } from 'native-base';
+
 import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
@@ -11,13 +12,7 @@ import SpatulaTest from './SpatulaTest.js';
 const backgroundImage = { uri: 'https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg' };
 
 export default class Welcome extends Component {
-  static get propTypes() {
-    return {
-      navigator: Proptypes.shape({
-        push: Proptypes.object,
-      }).isRequired,
-    };
-  }
+
   constructor(props) {
     super(props);
     this.onNext = this.onNext.bind(this);
@@ -36,12 +31,14 @@ export default class Welcome extends Component {
         });
       }
     } catch (error) {
+      // eslint-disable-next-line
       this.props.navigator.push({
         component: UserForm,
       });
     }
   }
   onApiTest() {
+    // eslint-disable-next-line
     this.props.navigator.push({
       component: SpatulaTest,
     });
@@ -54,7 +51,7 @@ export default class Welcome extends Component {
           style={Styles.backgroundImage}
           resizeMode={Image.resizeMode.sretch}
         >
-          <View style={Styles.scene}>
+          <Content>
             <View style={{ alignSelf: 'center' }}>
               <Text style={Styles.welcomeTitle}>
                 UniRide
@@ -64,21 +61,21 @@ export default class Welcome extends Component {
               </Text>
             </View>
             <Button onPress={this.onNext} >
-              Sign In
+              <Text>Sign In</Text>
             </Button>
             <Button
               backgroundColor="#303030"
               onPress={this.onApiTest}
             >
-              API Test
+              <Text>API Test</Text>
             </Button>
             <Button
               backgroundColor="#303030"
-              onPress={AsyncStorage.clear()}
+              onPress={AsyncStorage.clear}
             >
-              Clear App Data
+              <Text>Clear App Data</Text>
             </Button>
-          </View>
+          </Content>
         </Image>
       </View>
     );

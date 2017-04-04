@@ -1,10 +1,10 @@
-import React, { Component, Proptypes } from 'react';
+import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 import Button from 'native-base';
 
 import Styles from './Styles.js';
-import Spatula from '../apis/spatula.js';
+import { SpatulaVendible, SpatulaSubmit, SpatulaUser, SpatulaEndpointLocation } from '../apis/spatula.js';
 import CreditCardForm from './CreditCardForm.js';
 
 const uwaLoc = { latitude: -31.981179, longitude: 115.81991 };
@@ -38,14 +38,8 @@ function processPrice(amount) {
 }
 
 export default class FareEstimation extends Component {
-  static propTypes = {
-    navigator: Proptypes.shape({
-      push: Proptypes.func,
-    }).isRequired,
-  }
   constructor(props) {
     super(props);
-    this.spatula = new Spatula();
     this.state = {
       region: {
         latitude: -31.981179,
@@ -78,6 +72,7 @@ export default class FareEstimation extends Component {
     this.spatulaSubmit();
   }
   onNext() {
+    // eslint-disable-next-line
     this.props.navigator.push({
       component: CreditCardForm,
     });
@@ -101,10 +96,10 @@ export default class FareEstimation extends Component {
     });
   }
   async spatulaSubmit() {
-    const vendible = await this.spatula.getVendible();
-    const location = await this.spatula.getEndpointLocation();
-    const user = await this.spatula.getUser();
-    const data = await this.spatula.submit(vendible, location, user);
+    const vendible = await SpatulaVendible();
+    const location = await SpatulaEndpointLocation();
+    const user = await SpatulaUser();
+    const data = await SpatulaSubmit(vendible, location, user);
     this.updateEstimate(data.price);
     this.setState({ token: data.token });
     await AsyncStorage.setItem('spatula.confirm.token', this.state.token);

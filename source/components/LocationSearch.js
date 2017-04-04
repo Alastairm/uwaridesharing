@@ -1,4 +1,4 @@
-import React, { Proptypes } from 'react';
+import React from 'react';
 
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
@@ -12,6 +12,7 @@ export default function LocationSearch(props) {
       listViewDisplayed="auto"    // true/false/undefined
       fetchDetails
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+        // eslint-disable-next-line react/prop-types
         props.onPress(data, details);
       }}
       getDefaultValue={() => ''} // text input default value
@@ -57,7 +58,3 @@ export default function LocationSearch(props) {
     />
   );
 }
-
-LocationSearch.propTypes = {
-  onPress: Proptypes.func.isRequired,
-};
