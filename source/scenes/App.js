@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigator, StyleSheet } from 'react-native';
+import { Navigator } from 'react-native';
 
 import Welcome from './Welcome.js';
 

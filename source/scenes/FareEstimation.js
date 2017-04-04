@@ -1,15 +1,16 @@
-import React, { Component, Proptypes} from 'react';
-import { AsyncStorage, StyleSheet,Text,View,Image } from 'react-native';
+import React, { Component, Proptypes } from 'react';
+import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 import Button from '../components/Button.js';
 
 import Styles from './Styles.js';
 import Spatula from '../apis/spatula.js';
 import CreditCardForm from './CreditCardForm.js';
-const uwaLoc = {latitude:-31.981179, longitude:115.81991}
-const defaultZoom = {latitudeDelta: 0.0045, longitudeDelta: 0.006}
 
-export default class FareEstimation extends Component{
+const uwaLoc = { latitude: -31.981179, longitude: 115.81991 };
+const defaultZoom = { latitudeDelta: 0.0045, longitudeDelta: 0.006 };
+
+export default class FareEstimation extends Component {
   constructor(props) {
     super(props);
     this.spatula = new Spatula();
@@ -22,18 +23,18 @@ export default class FareEstimation extends Component{
       },
       endpoint: {
         latitude: 0,
-        longitude: 0
+        longitude: 0,
       },
       price:
       {
         total: '0.00',
         base: '0.00',
         distance: '0.00',
-        time: '0.00'
+        time: '0.00',
       },
-      payee: "",
-      token: "",
-      data: ""
+      payee: '',
+      token: '',
+      data: '',
     };
     this.setUpMap = this.setUpMap.bind(this);
     this.onNext = this.onNext.bind(this);
@@ -46,21 +47,21 @@ export default class FareEstimation extends Component{
     this.spatulaSubmit();
   }
   setUpMap() {
-    var region = this.state.region;
-    var endpoint = {latitude: 0, longitude: 0};
+    const region = this.state.region;
+    const endpoint = { latitude: 0, longitude: 0 };
     AsyncStorage.getItem('endpoint.lat').then((lat) => {
       endpoint.latitude = parseFloat(lat);
-      let latitudeDelta = uwaLoc.latitude-endpoint.latitude;
-      region.latitude = uwaLoc.latitude-(latitudeDelta)/2;
-      region.latitudeDelta = Math.abs(latitudeDelta)*2;
+      const latitudeDelta = uwaLoc.latitude - endpoint.latitude;
+      region.latitude = uwaLoc.latitude- (latitudeDelta) / 2;
+      region.latitudeDelta = Math.abs(latitudeDelta) * 2;
     });
     AsyncStorage.getItem('endpoint.lon').then((lon) => {
       endpoint.longitude = parseFloat(lon);
-      let longitudeDelta = uwaLoc.longitude - endpoint.longitude;
-      region.longitude = uwaLoc.longitude-(longitudeDelta)/2;
+      const longitudeDelta = uwaLoc.longitude - endpoint.longitude;
+      region.longitude = uwaLoc.longitude - (longitudeDelta) / 2;
       region.longitudeDelta = Math.abs(longitudeDelta)*2;
-      this.setState({endpoint: endpoint});
-      this.setState({region: region});
+      this.setState({ endpoint });
+      this.setState({ region });
     });
   }
   async spatulaSubmit() {

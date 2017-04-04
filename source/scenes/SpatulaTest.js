@@ -19,19 +19,19 @@ export default class SpatulaTest extends Component {
       vendibleID: "",
       submit: "",
       confirm: "",
-      stripe: {id: ""}
+      stripe: { id: ""}
     }
   }
   async slug() {
     let data = await this.spatula.slugVendible();
-    this.setState({vendible: data});
-    this.setState({vendibleID: data.id})
+    this.setState({ vendible: data});
+    this.setState({ vendibleID: data.id})
   }
   async submit() {
-    let vendible = this.state.vendibleID;
-    let location = await this.spatula.getEndpointLocation();
-    let user = await this.spatula.getUser();
-    let data = await this.spatula.submit(vendible, location, user);
+    const vendible = this.state.vendibleID;
+    const location = await this.spatula.getEndpointLocation();
+    const user = await this.spatula.getUser();
+    const data = await this.spatula.submit(vendible, location, user);
     this.setState({submit: data});
   }
   async confirm(number) {

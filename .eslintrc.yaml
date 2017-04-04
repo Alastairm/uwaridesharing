@@ -1,4 +1,10 @@
-"extends": "airbnb"
-"rules": {
-  "react/jsx-filename-extension": ["off"],
-}
+parser: babel-eslint
+
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - airbnb
+
+rules:
+  import/extensions: 0
+  react/jsx-filename-extension: 0

@@ -7,17 +7,15 @@ export default class LocationSearch extends Component {
   render() {
     return (
       <GooglePlacesAutocomplete
-        placeholder='Search'
+        placeholder="Search"
         minLength={2} // minimum length of text to search
         autoFocus={false}
-        listViewDisplayed='auto'    // true/false/undefined
-        fetchDetails={true}
+        listViewDisplayed="auto"    // true/false/undefined
+        fetchDetails
         onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
           this.props.onPress(data, details);
         }}
-        getDefaultValue={() => {
-          return ''; // text input default value
-        }}
+        getDefaultValue={() => ''} // text input default value
         query={{
           // available options: https://developers.google.com/places/web-service/autocomplete
           key: 'AIzaSyCvNusrMY6pA7DSPUY_eN8tHE1liuTpCN8',
@@ -25,7 +23,7 @@ export default class LocationSearch extends Component {
           types: '',  // default: 'geocode'
           location: ' -31.980101,115.818650',
           radius: '150',
-          components: 'country:au'
+          components: 'country:au',
         }}
         styles={{
           description: {
