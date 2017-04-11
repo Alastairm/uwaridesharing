@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, Proptypes } from 'react';
 import { AsyncStorage, Image, Text, View } from 'react-native';
-import { Button, Content } from 'native-base';
-
 import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
 import Map from './Map.js';
 import SpatulaTest from './SpatulaTest.js';
 
+import Button from '../components/Button.js';
 
 const backgroundImage = { uri: 'https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg' };
 
 export default class Welcome extends Component {
-
+  static get propTypes() {
+    return {
+      navigator: Proptypes.Object.isRequired,
+    };
+  }
   constructor(props) {
     super(props);
     this.onNext = this.onNext.bind(this);
+    this.onClear = this.onClear.bind(this);
     this.onApiTest = this.onApiTest.bind(this);
   }
   async onNext() {
@@ -31,14 +35,12 @@ export default class Welcome extends Component {
         });
       }
     } catch (error) {
-      // eslint-disable-next-line
       this.props.navigator.push({
         component: UserForm,
       });
     }
   }
   onApiTest() {
-    // eslint-disable-next-line
     this.props.navigator.push({
       component: SpatulaTest,
     });
@@ -51,31 +53,33 @@ export default class Welcome extends Component {
           style={Styles.backgroundImage}
           resizeMode={Image.resizeMode.sretch}
         >
-          <Content>
+          <View style={Styles.scene}>
             <View style={{ alignSelf: 'center' }}>
               <Text style={Styles.welcomeTitle}>
-                UniRide
-              </Text>
+              UniRide
+            </Text>
               <Text style={Styles.welcomeSubtitle}>
-                UWA Rideshare
-              </Text>
+              UWA Rideshare
+            </Text>
             </View>
-            <Button onPress={this.onNext} >
-              <Text>Sign In</Text>
-            </Button>
+            <Button
+              onPress={this.onNext}
+            >
+            Sign In
+          </Button>
             <Button
               backgroundColor="#303030"
               onPress={this.onApiTest}
             >
-              <Text>API Test</Text>
-            </Button>
+            API Test
+          </Button>
             <Button
               backgroundColor="#303030"
               onPress={AsyncStorage.clear}
             >
-              <Text>Clear App Data</Text>
-            </Button>
-          </Content>
+            Clear App Data
+          </Button>
+          </View>
         </Image>
       </View>
     );
