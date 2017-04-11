@@ -1,8 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const Styles = StyleSheet.create({
+  // Comment explaining purpose of style class.
+  // And where in the app it should be used.
   scene: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFillObject, // Comment describing purpose of each line.
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
@@ -23,18 +25,6 @@ const Styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonBox: {
-    padding: 10,
-    height: 45,
-    width: 320,
-    overflow: 'hidden',
-    borderRadius: 4,
-    backgroundColor: 'steelblue',
-  },
-  buttonContainer: {
-    height: 60,
     alignItems: 'center',
   },
   baseText: {

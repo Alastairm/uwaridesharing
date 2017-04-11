@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest --verbose",
-    "build": "mkdir -p lib && babel source/ -D lib",
+    "test": "eslint source/** && flow && jest --verbose",
+    "build": "eslint && flow && jest",
     "prepublish": "npm run build",
+    "eslint": "eslint source/**",
     "flow": "flow",
-    "eslint": "eslint source/**"
+    "jest": "jest --verbose"
   },
   "dependencies": {
     "native-base": "^2.1.0",
