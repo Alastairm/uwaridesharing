@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { AsyncStorage, Image, Text, View } from 'react-native';
-// import { Content } from 'native-base';
-
 import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
@@ -31,6 +29,7 @@ export default class Welcome extends Component {
         });
       }
     } catch (error) {
+      // Navigator should use context instead of props.
       // eslint-disable-next-line
       this.props.navigator.push({
         component: UserForm,
@@ -38,6 +37,7 @@ export default class Welcome extends Component {
     }
   }
   onApiTest() {
+    // Navigator should use context instead of props.
     // eslint-disable-next-line
     this.props.navigator.push({
       component: SpatulaTest,
@@ -54,27 +54,29 @@ export default class Welcome extends Component {
           <View style={Styles.scene}>
             <View style={{ alignSelf: 'center' }}>
               <Text style={Styles.welcomeTitle}>
-                UniRide
-              </Text>
+              UniRide
+            </Text>
               <Text style={Styles.welcomeSubtitle}>
-                UWA Rideshare
-              </Text>
+              UWA Rideshare
+            </Text>
             </View>
-            <Button onPress={this.onNext} >
-              <Text>Sign In</Text>
-            </Button>
+            <Button
+              onPress={this.onNext}
+            >
+            Sign In
+          </Button>
             <Button
               backgroundColor="#303030"
               onPress={this.onApiTest}
             >
-              <Text>API Test</Text>
-            </Button>
+            API Test
+          </Button>
             <Button
               backgroundColor="#303030"
               onPress={AsyncStorage.clear}
             >
-              <Text>Clear App Data</Text>
-            </Button>
+            Clear App Data
+          </Button>
           </View>
         </Image>
       </View>
