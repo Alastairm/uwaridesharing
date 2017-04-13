@@ -1,28 +1,16 @@
-import React, { Component } from 'react';
-import { Image, Navigator, StyleSheet, View } from 'react-native';
+import React from 'react';
+import { Navigator } from 'react-native';
 
-import Welcome from './Welcome.js'
-import SpatulaTest from './SpatulaTest.js';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
+import Welcome from './Welcome.js';
 
 
-export default class App extends Component {
-  render() {
-    return (
+export default function App() {
+  return (
     <Navigator
-      initialRoute={{component: Welcome}}
-      renderScene={(route, navigator) => {
-          return React.createElement(route.component, { navigator });
-      }}
+      initialRoute={{ component: Welcome }}
+      renderScene={(route, navigator) =>
+          React.createElement(route.component, { navigator })
+      }
     />
   );
-  }
 }

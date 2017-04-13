@@ -1,0 +1,15 @@
+parser: babel-eslint
+
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - airbnb
+
+rules:
+  import/extensions: 0
+  react/jsx-filename-extension: 0
+  react/forbid-prop-types: 0
+  radix: 0
+
+globals:
+  fetch: false

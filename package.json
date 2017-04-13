@@ -4,12 +4,15 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "eslint source/** && flow && jest --verbose",
     "build": "mkdir -p lib && babel source/ -D lib",
     "prepublish": "npm run build",
-    "flow": "flow"
+    "eslint": "eslint source/**",
+    "flow": "flow",
+    "jest": "jest --verbose"
   },
   "dependencies": {
+    "native-base": "^2.1.0",
     "react": "~15.4.1",
     "react-native": "0.42.3",
     "react-native-button": "^1.8.2",
@@ -20,14 +23,24 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
+    "babel-eslint": "^7.2.1",
     "babel-jest": "19.0.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "1.9.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react-native": "^2.3.1",
     "flow-bin": "^0.42.0",
     "jest": "19.0.2",
     "react-test-renderer": "~15.4.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|uwaridesharing|@shoutem)/"
+]
   }
 }

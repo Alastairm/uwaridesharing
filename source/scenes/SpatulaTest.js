@@ -1,51 +1,50 @@
-import React, { Component, Proptypes} from 'react';
-import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
 
-import Button from '../components/Button.js';
+import Button from 'native-base';
 import Styles from './Styles.js';
-import Spatula from '../apis/spatula.js';
-import Stripe from '../apis/stripe.js';
+import { SpatulaVendible, SpatulaSubmit, SpatulaConfirm,
+         SpatulaUser, SpatulaEndpointLocation } from '../apis/spatula.js';
+import StripeToken from '../apis/stripe.js';
 
 export default class SpatulaTest extends Component {
   constructor(props) {
     super(props);
-    this.spatula = new Spatula();
-    this.stripe = new Stripe();
     this.slug = this.slug.bind(this);
     this.submit = this.submit.bind(this);
     this.confirm = this.confirm.bind(this);
     this.state = {
-      vendible: "",
-      vendibleID: "",
-      submit: "",
-      confirm: "",
-      stripe: {id: ""}
-    }
+      vendible: '',
+      vendibleID: '',
+      submit: '',
+      confirm: '',
+      stripe: { id: '' },
+    };
   }
   async slug() {
-    let data = await this.spatula.slugVendible();
-    this.setState({vendible: data});
-    this.setState({vendibleID: data.id})
+    const data = await SpatulaVendible();
+    this.setState({ vendible: data });
+    this.setState({ vendibleID: data.id });
   }
   async submit() {
-    let vendible = this.state.vendibleID;
-    let location = await this.spatula.getEndpointLocation();
-    let user = await this.spatula.getUser();
-    let data = await this.spatula.submit(vendible, location, user);
-    this.setState({submit: data});
+    const vendible = this.state.vendibleID;
+    const location = await SpatulaEndpointLocation();
+    const user = await SpatulaUser();
+    const data = await SpatulaSubmit(vendible, location, user);
+    this.setState({ submit: data });
   }
-  async confirm(number) {
-    let CC = {
+  async confirm() {
+    const CC = {
       number: 4242424242424242,
       exp_month: 12,
       exp_year: 17,
-      cvc: 123
-    }
-    let stripe = await this.stripe.token(CC.number, CC.exp_month, CC.exp_year, CC.cvc);
-    this.setState({stripe: stripe})
-    let token = this.state.submit.token;
-    let data = await this.spatula.confirm(token, stripe.id);
-    this.setState({confirm: data})
+      cvc: 123,
+    };
+    const stripe = await StripeToken(CC.number, CC.exp_month, CC.exp_year, CC.cvc);
+    this.setState({ stripe });
+    const token = this.state.submit.token;
+    const data = await SpatulaConfirm(token, stripe.id);
+    this.setState({ confirm: data });
   }
   render() {
     return (
@@ -60,19 +59,22 @@ export default class SpatulaTest extends Component {
           {JSON.stringify(this.state.stripe.id)}
           {JSON.stringify(this.state.confirm)}
         </Text>
-          <Button
-            onPress={this.slug}>
-            slugVendible endpoint
-          </Button>
-          <Button
-            onPress={this.submit}>
-            submit endpoint
-          </Button>
-          <Button
-            onPress={this.confirm}>
-            confirm endpoint
-          </Button>
+        <Button
+          onPress={this.slug}
+        >
+          slugVendible endpoint
+        </Button>
+        <Button
+          onPress={this.submit}
+        >
+          submit endpoint
+        </Button>
+        <Button
+          onPress={this.confirm}
+        >
+          confirm endpoint
+        </Button>
       </View>
-    )
+    );
   }
 }
