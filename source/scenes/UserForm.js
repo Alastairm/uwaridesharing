@@ -1,16 +1,11 @@
-import React, { Component, Proptypes } from 'react';
+import React, { Component } from 'react';
 import { AsyncStorage, Text, View } from 'react-native';
-import Button from 'native-base';
+import Button from '../components/Button.js';
 
 import UserInput from '../components/UserInput.js';
 import Map from './Map.js';
 
 export default class UserForm extends Component {
-  static get propTypes() {
-    return {
-      navigator: Proptypes.Object.isRequired,
-    };
-  }
   constructor(props) {
     super(props);
     // ToDO: Check if user information is already saved
@@ -29,6 +24,8 @@ export default class UserForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   onNext() {
+    // Navigator should use context instead of props.
+    // eslint-disable-next-line
     this.props.navigator.push({
       component: Map,
     });
