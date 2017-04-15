@@ -4,7 +4,6 @@ import MapView from 'react-native-maps';
 import Button from 'native-base';
 
 import Styles from './Styles.js';
-import { SpatulaVendible, SpatulaSubmit, SpatulaUser, SpatulaEndpointLocation } from '../apis/spatula.js';
 import CreditCardForm from './CreditCardForm.js';
 
 const uwaLoc = { latitude: -31.981179, longitude: 115.81991 };
@@ -65,11 +64,9 @@ export default class FareEstimation extends Component {
     this.setUpMap = this.setUpMap.bind(this);
     this.onNext = this.onNext.bind(this);
     this.spatulaSubmit = this.spatulaSubmit.bind(this);
-    this.updateEstimate = this.updateEstimate.bind(this);
   }
   async componentWillMount() {
     this.setUpMap();
-    this.spatulaSubmit();
   }
   onNext() {
     // eslint-disable-next-line
@@ -94,15 +91,6 @@ export default class FareEstimation extends Component {
       this.setState({ endpoint });
       this.setState({ region });
     });
-  }
-  async spatulaSubmit() {
-    const vendible = await SpatulaVendible();
-    const location = await SpatulaEndpointLocation();
-    const user = await SpatulaUser();
-    const data = await SpatulaSubmit(vendible, location, user);
-    this.updateEstimate(data.price);
-    this.setState({ token: data.token });
-    await AsyncStorage.setItem('spatula.confirm.token', this.state.token);
   }
   updateEstimate(price) {
     const priceState = this.state.price;

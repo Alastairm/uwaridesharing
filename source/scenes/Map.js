@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
-import Button from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
 
-import Spatula from '../apis/spatula.js';
+import Button from '../components/Button.js';
 import LocationSearch from '../components/LocationSearch.js';
 import Styles from './Styles.js';
 
 import FareEstimation from './FareEstimation.js';
 
+
 export default class Map extends Component {
   constructor(props) {
     super(props);
-    this.spatula = new Spatula();
     this.state = {
       region: {
         latitude: -31.980101,
@@ -26,12 +25,12 @@ export default class Map extends Component {
     this.onNext = this.onNext.bind(this);
     this.onRegionChange = this.onRegionChange.bind(this);
     this.onLocationSeach = this.onLocationSeach.bind(this);
-    this.slug = this.slug.bind(this);
   }
   async onNext() {
-    await this.slug();
     await AsyncStorage.setItem('endpoint.lat', String(this.state.region.latitude));
     await AsyncStorage.setItem('endpoint.lon', String(this.state.region.longitude));
+    // Navigator should use context instead of props.
+    // eslint-disable-next-line
     this.props.navigator.push({
       component: FareEstimation,
     });
@@ -45,10 +44,6 @@ export default class Map extends Component {
     region.latitude = parseFloat(details.geometry.location.lat);
     region.longitude = parseFloat(details.geometry.location.lng);
     this.setState({ region });
-  }
-  async slug() {
-    const data = await this.spatula.slugVendible();
-    await AsyncStorage.setItem('spatula.submit.vendible', String(data.id));
   }
   render() {
     return (
