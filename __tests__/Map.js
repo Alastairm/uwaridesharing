@@ -8,8 +8,8 @@ import Map from '../source/scenes/Map.js';
 jest.mock('react-native-maps', () => 'MapView');
 
 test('Matches snapshot', () => {
-  const app = renderer.create(
+  const render = renderer.create(
     <Map />,
   ).toJSON();
-  expect(app).toMatchSnapshot();
+  expect(render).toMatchSnapshot();
 });

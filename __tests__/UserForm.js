@@ -6,8 +6,8 @@ import UserForm from '../source/scenes/UserForm.js';
 
 
 test('Matches snapshot', () => {
-  const app = renderer.create(
+  const render = renderer.create(
     <UserForm />,
   ).toJSON();
-  expect(app).toMatchSnapshot();
+  expect(render).toMatchSnapshot();
 });

@@ -6,8 +6,8 @@ import Welcome from '../source/scenes/Welcome.js';
 
 
 test('Matches snapshot', () => {
-  const app = renderer.create(
+  const render = renderer.create(
     <Welcome />,
   ).toJSON();
-  expect(app).toMatchSnapshot();
+  expect(render).toMatchSnapshot();
 });
