@@ -2,12 +2,12 @@ import 'react-native';
 import React from 'react';
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import App from '../source/scenes/App.js';
+import UserForm from '../source/scenes/UserForm.js';
 
 
-test('renders correctly', () => {
+test('Matches snapshot', () => {
   const app = renderer.create(
-    <App />,
+    <UserForm />,
   ).toJSON();
   expect(app).toMatchSnapshot();
 });
