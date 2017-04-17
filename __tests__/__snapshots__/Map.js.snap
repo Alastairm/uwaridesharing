@@ -2,15 +2,7 @@
 
 exports[`Matches snapshot 1`] = `
 <View
-  style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "flexDirection": "column",
-      "flexWrap": "wrap",
-      "justifyContent": "center",
-    }
-  }
+  style={undefined}
 >
   <MapView
     onRegionChange={[Function]}
@@ -54,24 +46,10 @@ exports[`Matches snapshot 1`] = `
     
   </Text>
   <View
-    style={
-      Object {
-        "bottom": 0,
-        "flexDirection": "column",
-        "justifyContent": "space-between",
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
+    style={undefined}
   >
     <View
-      style={
-        Object {
-          "justifyContent": "flex-start",
-        }
-      }
+      style={undefined}
     >
       <View
         style={
@@ -132,11 +110,7 @@ exports[`Matches snapshot 1`] = `
       </View>
     </View>
     <View
-      style={
-        Object {
-          "justifyContent": "flex-end",
-        }
-      }
+      style={undefined}
     >
       <View
         style={
