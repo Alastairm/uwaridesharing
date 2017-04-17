@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+    }
+  }
+>
+  <MapView
+    onRegionChange={[Function]}
+    region={
+      Object {
+        "latitude": -31.980101,
+        "latitudeDelta": 0.0045,
+        "longitude": 115.81865,
+        "longitudeDelta": 0.006,
+      }
+    }
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={false}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#0060C0",
+          "fontSize": 50,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+  <View
+    style={
+      Object {
+        "bottom": 0,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#C9C9CE",
+                "borderBottomColor": "#b5b5b5",
+                "borderBottomWidth": 0.5,
+                "borderTopColor": "#7e7e7e",
+                "borderTopWidth": 0.5,
+                "flexDirection": "row",
+                "height": 44,
+              },
+              undefined,
+            ]
+          }
+        >
+          <TextInput
+            autoFocus={false}
+            clearButtonMode="while-editing"
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="Search"
+            placeholderTextColor="#A8A8A8"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#FFFFFF",
+                  "borderRadius": 5,
+                  "flex": 1,
+                  "fontSize": 15,
+                  "height": 28,
+                  "marginLeft": 8,
+                  "marginRight": 8,
+                  "marginTop": 7.5,
+                  "paddingBottom": 4.5,
+                  "paddingLeft": 10,
+                  "paddingRight": 10,
+                  "paddingTop": 4.5,
+                },
+                undefined,
+              ]
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "justifyContent": "flex-end",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 60,
+          }
+        }
+      >
+        <View
+          accessibilityComponentType="button"
+          accessibilityLabel={undefined}
+          accessibilityTraits="button"
+          accessible={true}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#0060C0",
+              "borderRadius": 4,
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "center",
+              "opacity": 1,
+              "overflow": "hidden",
+              "width": 180,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "#007aff",
+                  "fontSize": 17,
+                  "fontWeight": "500",
+                  "textAlign": "center",
+                },
+                null,
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                null,
+              ]
+            }
+          >
+            Set Pickup Location
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

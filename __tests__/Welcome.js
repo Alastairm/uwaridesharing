@@ -2,12 +2,12 @@ import 'react-native';
 import React from 'react';
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import App from '../source/scenes/App.js';
+import Welcome from '../source/scenes/Welcome.js';
 
 
-test('renders correctly', () => {
-  const app = renderer.create(
-    <App />,
+test('Matches snapshot', () => {
+  const render = renderer.create(
+    <Welcome />,
   ).toJSON();
-  expect(app).toMatchSnapshot();
+  expect(render).toMatchSnapshot();
 });
