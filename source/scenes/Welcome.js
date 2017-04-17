@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { AsyncStorage, Image, Text, View } from 'react-native';
-import EStyleSheet from 'react-native-extended-stylesheet';
 import Styles from './Styles.js';
 
 import UserForm from './UserForm.js';
@@ -16,7 +15,6 @@ export default class Welcome extends Component {
     super(props);
     this.onNext = this.onNext.bind(this);
     this.onApiTest = this.onApiTest.bind(this);
-    this.onClear = this.onClear.bind(this);
   }
   async onNext() {
     try {
@@ -44,9 +42,6 @@ export default class Welcome extends Component {
     this.props.navigator.push({
       component: SpatulaTest,
     });
-  }
-  onClear() {
-    AsyncStorage.clear();
   }
   render() {
     return (
@@ -78,7 +73,7 @@ export default class Welcome extends Component {
           </Button>
             <Button
               backgroundColor="#303030"
-              onPress={this.onClear}
+              onPress={AsyncStorage.clear}
             >
             Clear App Data
           </Button>
