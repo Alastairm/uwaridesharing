@@ -17,6 +17,7 @@
     "react-native": "0.42.3",
     "react-native-button": "^1.8.2",
     "react-native-credit-card-input": "^0.3.3",
+    "react-native-extended-stylesheet": "^0.4.0",
     "react-native-google-places-autocomplete": "^1.2.11",
     "react-native-maps": "^0.13.1",
     "react-native-vector-icons": "^4.0.0"
@@ -41,6 +42,6 @@
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|uwaridesharing|@shoutem)/"
-]
+    ]
   }
 }

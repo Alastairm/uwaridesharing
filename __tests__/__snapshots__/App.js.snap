@@ -105,8 +105,6 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "flex": 1,
-              "height": null,
-              "width": null,
             }
           }
         >
@@ -137,7 +135,8 @@ exports[`renders correctly 1`] = `
                 style={
                   Object {
                     "color": "navy",
-                    "fontSize": 108,
+                    "fontSize": 88,
+                    "marginTop": 26.68,
                     "textAlign": "center",
                   }
                 }
