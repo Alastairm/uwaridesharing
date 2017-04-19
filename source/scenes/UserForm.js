@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Text, View } from 'react-native';
-import Button from '../components/Button.js';
-
-import UserInput from '../components/UserInput.js';
+import { AsyncStorage, Text } from 'react-native';
+import {
+  Container,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
+  Button,
+} from 'native-base';
 import Map from './Map.js';
 
 export default class UserForm extends Component {
@@ -52,41 +58,34 @@ export default class UserForm extends Component {
     await AsyncStorage.setItem('user.email', this.state.user.email);
     await AsyncStorage.setItem('user.phone', this.state.user.phone);
   }
+
   focusNextField(nextField) {
     this[nextField].focus();
   }
   render() {
     return (
-      <View>
-        <UserInput
-          field="name"
-          onChange={this.onChange}
-          onNextField={this.focusNextField}
-          finalField={false}
-          showError={this.state.showErrors}
-        />
-        <UserInput
-          field="email"
-          onChange={this.onChange}
-          finalField={false}
-          showError={this.state.showErrors}
-        />
-        <UserInput
-          field="phone"
-          onChange={this.onChange}
-          showError={this.state.showErrors}
-        />
-        <Button
-          onPress={this.onSubmit}
-        >
-          Submit
-        </Button>
-
-        <Text>
-          {JSON.stringify(this.state.user)}
-          {JSON.stringify(this.state.data)}
-        </Text>
-      </View>
+      <Container>
+        <Content>
+          <Form>
+            <Item floatingLabel>
+              <Label>Name</Label>
+              <Input />
+            </Item>
+            <Item floatingLabel>
+              <Label>Email</Label>
+              <Input />
+            </Item>
+            <Item floatingLabel>
+              <Label>Phone</Label>
+              <Input />
+            </Item>
+            <Button rounded large info onPress={this.onNext} >
+              <Text> submit </Text>
+            </Button>
+          </Form>
+        </Content>
+      </Container>
     );
   }
+
 }
