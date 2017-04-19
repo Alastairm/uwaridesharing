@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Text, View } from 'react-native';
+import { AsyncStorage, Text } from 'react-native';
 import {
   Container,
   Content,
@@ -7,11 +7,10 @@ import {
   Item,
   Input,
   Label,
-  Button
+  Button,
 } from 'native-base';
-// import Button from '../components/Button.js';
-import UserInput from '../components/UserInput.js';
 import Map from './Map.js';
+
 export default class UserForm extends Component {
   constructor(props) {
     super(props);
@@ -79,7 +78,7 @@ export default class UserForm extends Component {
             <Item floatingLabel>
               <Label>Phone</Label>
               <Input />
-              </Item>
+            </Item>
             <Button rounded large info onPress={this.onNext} >
               <Text> submit </Text>
             </Button>
