@@ -8,7 +8,6 @@ import Button from '../components/Button.js';
 import LocationSearch from '../components/LocationSearch.js';
 import Styles from './Styles.js';
 
-//import FareEstimation from './FareEstimation.js';
 import Dotw from './Dotw.js';
 
 export default class Map extends Component {
