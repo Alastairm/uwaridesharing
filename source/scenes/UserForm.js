@@ -8,6 +8,8 @@ import {
   Input,
   Label,
   Button,
+  InputGroup,
+  Icon
 } from 'native-base';
 import Map from './Map.js';
 
@@ -68,14 +70,17 @@ export default class UserForm extends Component {
         <Content>
           <Form>
             <Item floatingLabel>
+              <Icon active name='person' />
               <Label>Name</Label>
               <Input />
             </Item>
             <Item floatingLabel>
+              <Icon active name='mail' />
               <Label>Email</Label>
               <Input />
             </Item>
             <Item floatingLabel>
+              <Icon active name='home' />
               <Label>Phone</Label>
               <Input />
             </Item>
