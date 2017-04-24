@@ -9,6 +9,7 @@ import {
   Label,
   Button,
   Icon,
+  InputGroup,
 } from 'native-base';
 import Map from './Map.js';
 
@@ -71,7 +72,6 @@ export default class UserForm extends Component {
             <Item floatingLabel>
               <Icon active name="person" />
               <Label>Name</Label>
-              <Input />
             </Item>
             <Item floatingLabel>
               <Icon active name="mail" />
@@ -87,6 +87,10 @@ export default class UserForm extends Component {
               <Text> submit </Text>
             </Button>
           </Form>
+          <InputGroup iconRight success>
+            <Icon name="ios-checkmark-circle" style={{ color: '#00C497' }} />
+            <Input placeholder="Textbox with Success Input" />
+          </InputGroup>
         </Content>
       </Container>
     );
