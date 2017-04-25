@@ -25,9 +25,9 @@ const Styles = EStyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: '2%', // relative spacing between button and bottom of screen
   },
-  // baseText: { unable to find location in app
-  //   fontFamily: 'Cochin',
-  // },
+  errorText: {
+    color: 'red',
+  },
   titleText: { // FareEstimation
     fontFamily: 'Cochin',
     fontSize: '1.5rem',

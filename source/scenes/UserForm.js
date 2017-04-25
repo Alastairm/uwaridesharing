@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { AsyncStorage, Text } from 'react-native';
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   Icon,
 } from 'native-base';
 
-// import { Styles } from './Styles.js';
+import Styles from './Styles.js';
 import Map from './Map.js';
 
 
@@ -156,20 +156,80 @@ export default class UserForm extends Component {
               error={this.state.isFilled.phone && !this.state.isValid.phone}
             >
               <Icon active name="phone-portrait" />
-              <Label>Phone</Label>
+              <Label>Mobile</Label>
               <Input
                 onChangeText={this.validatePhone}
                 onBlur={this.phoneFilled}
               />
             </Item>
-            <Button rounded large info onPress={this.onNext} >
-              <Text> submit </Text>
-            </Button>
           </Form>
-          <Text> {JSON.stringify(this.state)} </Text>
+
+          <Button rounded large info onPress={this.onNext} >
+            <Text> submit </Text>
+          </Button>
+
+          <NameErrorMessage
+            isFilled={this.state.isFilled.name}
+            isValid={this.state.isValid.name}
+          />
+          <EmailErrorMessage
+            isFilled={this.state.isFilled.email}
+            isValid={this.state.isValid.email}
+          />
+          <PhoneErrorMessage
+            isFilled={this.state.isFilled.phone}
+            isValid={this.state.isValid.phone}
+          />
         </Content>
       </Container>
     );
   }
-
 }
+
+function NameErrorMessage({ isFilled, isValid }) {
+  const show = isFilled && !isValid;
+  if (show) {
+    return (
+      <Text style={Styles.errorText} >
+        Name contains disallowed characters.
+      </Text>
+    );
+  }
+  return null;
+}
+NameErrorMessage.propTypes = {
+  isFilled: PropTypes.bool.isRequired,
+  isValid: PropTypes.bool.isRequired,
+};
+
+function EmailErrorMessage({ isFilled, isValid }) {
+  const show = isFilled && !isValid;
+  if (show) {
+    return (
+      <Text style={Styles.errorText} >
+        Please enter a valid .uwa.edu.au email address.
+      </Text>
+    );
+  }
+  return null;
+}
+EmailErrorMessage.propTypes = {
+  isFilled: PropTypes.bool.isRequired,
+  isValid: PropTypes.bool.isRequired,
+};
+
+function PhoneErrorMessage({ isFilled, isValid }) {
+  const show = isFilled && !isValid;
+  if (show) {
+    return (
+      <Text style={Styles.errorText} >
+        Please enter a valid Australian mobile number.
+      </Text>
+    );
+  }
+  return null;
+}
+PhoneErrorMessage.propTypes = {
+  isFilled: PropTypes.bool.isRequired,
+  isValid: PropTypes.bool.isRequired,
+};
