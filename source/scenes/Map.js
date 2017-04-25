@@ -6,7 +6,7 @@ import MapView from 'react-native-maps';
 
 import Button from '../components/Button.js';
 import LocationSearch from '../components/LocationSearch.js';
-import Styles from './Styles.js';
+import { Styles } from './Styles.js';
 
 import Dotw from './Dotw.js';
 
