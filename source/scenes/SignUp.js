@@ -10,12 +10,13 @@ import {
   Button,
   Icon,
 } from 'native-base';
+import * as firebase from 'firebase';
 
 import { Styles } from './Styles.js';
 import Map from './Map.js';
 
 
-export default class UserForm extends Component {
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
     // ToDO: Check if user information is already saved
@@ -24,6 +25,7 @@ export default class UserForm extends Component {
         name: false,
         email: false,
         phone: false,
+        pass: false,
       },
       valid: false,
       showErrors: false,
@@ -31,28 +33,44 @@ export default class UserForm extends Component {
         name: false,
         email: false,
         phone: false,
+        pass: false,
       },
       isValid: {
         name: false,
         email: false,
         phone: false,
+        pass: false,
       },
     };
     this.onNext = this.onNext.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setUserField = this.setUserField.bind(this);
     this.setIsValid = this.setIsValid.bind(this);
     this.setIsfilled = this.setIsfilled.bind(this);
     this.validateName = this.validateName.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
+    this.validatePass = this.validatePass.bind(this);
     this.nameFilled = this.nameFilled.bind(this);
     this.emailFilled = this.emailFilled.bind(this);
     this.phoneFilled = this.phoneFilled.bind(this);
+    this.passFilled = this.passFilled.bind(this);
     this.save = this.save.bind(this);
   }
-  onNext() {
+  async onNext() {
     // Navigator should use context instead of props.
+    firebase.auth()
+      .createUserWithEmailAndPassword(this.state.user.email, this.state.user.pass)
+      .then((user) => {
+        firebase.database().ref(`users/${user.uid}`).set({
+          name: this.state.user.name,
+          email: this.state.user.email,
+          phone: this.state.user.phone,
+        });
+        AsyncStorage.setItem('user.uid', user.uid);
+      });
+
     // eslint-disable-next-line
     this.props.navigator.push({
       component: Map,
@@ -64,6 +82,10 @@ export default class UserForm extends Component {
     this.setState({ user });
   }
   async onSubmit() {
+    if (!(this.state.isValid.name && this.state.isValid.email &&
+          this.state.isValid.phone && this.state.isValid.pass)) {
+      return;
+    }
     const hasName = this.state.user.name;
     const hasEmail = this.state.user.email;
     const hasPhone = this.state.user.phone;
@@ -73,6 +95,11 @@ export default class UserForm extends Component {
     } else { // If not all fields are valid display error messages for invalid fields
       this.setState({ showErrors: true });
     }
+  }
+  setUserField(fieldName, fieldValue) {
+    const user = this.state.user;
+    user[fieldName] = fieldValue;
+    this.setState(user);
   }
   setIsfilled(fieldName, filledStatus) {
     const isFilled = this.state.isFilled;
@@ -84,37 +111,46 @@ export default class UserForm extends Component {
     isValid[fieldName] = validStatus;
     this.setState(isValid);
   }
-  validateEmail(text) {
-    const emailRegex = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@(student\.|)(uwa\.edu\.au)$/;
-    const valid = emailRegex.test(text);
-    this.setIsValid('email', valid);
-  }
   validateName(text) {
     // I give up on regex for this sree
     const valid = text.length > 0;
     this.setIsValid('name', valid);
+    this.setUserField('name', text);
+  }
+  validateEmail(text) {
+    const emailRegex = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@(student\.|)(uwa\.edu\.au)$/;
+    const valid = emailRegex.test(text);
+    this.setIsValid('email', valid);
+    this.setUserField('email', text);
   }
   validatePhone(text) {
     const phoneRegex = /04[0-9]{8}$/;
     const valid = phoneRegex.test(text);
     this.setIsValid('phone', valid);
+    this.setUserField('phone', text);
+  }
+  validatePass(text) {
+    const valid = text.length > 5;
+    this.setIsValid('pass', valid);
+    this.setUserField('pass', text);
   }
   nameFilled() {
-    const valid = true;
-    this.setIsfilled('name', valid);
+    this.setIsfilled('name', true);
   }
   emailFilled() {
-    const valid = true;
-    this.setIsfilled('email', valid);
+    this.setIsfilled('email', true);
   }
   phoneFilled() {
-    const valid = true;
-    this.setIsfilled('phone', valid);
+    this.setIsfilled('phone', true);
+  }
+  passFilled() {
+    this.setIsfilled('pass', true);
   }
   async save() {
     await AsyncStorage.setItem('user.saved', 'true');
     await AsyncStorage.setItem('user.name', this.state.user.name);
     await AsyncStorage.setItem('user.email', this.state.user.email);
+    await AsyncStorage.setItem('user.phone', this.state.user.phone);
     await AsyncStorage.setItem('user.phone', this.state.user.phone);
   }
 
@@ -160,6 +196,18 @@ export default class UserForm extends Component {
               <Input
                 onChangeText={this.validatePhone}
                 onBlur={this.phoneFilled}
+              />
+            </Item>
+            <Item
+              floatingLabel
+              success={this.state.isFilled.pass && this.state.isValid.pass}
+              error={this.state.isFilled.pass && !this.state.isValid.pass}
+            >
+              <Icon active name="key" />
+              <Label>Password</Label>
+              <Input
+                onChangeText={this.validatePass}
+                onBlur={this.passFilled}
               />
             </Item>
           </Form>

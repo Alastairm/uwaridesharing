@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "913690118582",
+    "firebase_url": "https://uwaridesharing.firebaseio.com",
+    "project_id": "uwaridesharing",
+    "storage_bucket": "uwaridesharing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913690118582:android:18fc5ce77625e670",
+        "android_client_info": {
+          "package_name": "com.uwaridesharing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913690118582-lgg6tq23j01tkoubhh9po801n9ust7oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANkrBwHFtb5tJwFuOf4HuPe2PcLu7m4H0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
