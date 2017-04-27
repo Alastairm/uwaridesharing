@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "eslint source/** && flow && jest --verbose",
     "prepare": "mkdir -p lib && babel source/ -D lib",
+    "clear": "watchman watch-del-all && rm -rf node_modules && yarn cache clean && yarn install",
     "eslint": "eslint source/**",
     "flow": "flow",
     "jest": "jest --verbose"
