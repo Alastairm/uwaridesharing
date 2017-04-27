@@ -6,10 +6,9 @@ import MapView from 'react-native-maps';
 
 import Button from '../components/Button.js';
 import LocationSearch from '../components/LocationSearch.js';
-import Styles from './Styles.js';
+import { Styles } from './Styles.js';
 
-import FareEstimation from './FareEstimation.js';
-
+import Dotw from './Dotw.js';
 
 export default class Map extends Component {
   constructor(props) {
@@ -32,7 +31,7 @@ export default class Map extends Component {
     // Navigator should use context instead of props.
     // eslint-disable-next-line
     this.props.navigator.push({
-      component: FareEstimation,
+      component: Dotw,
     });
   }
   onRegionChange(region) {

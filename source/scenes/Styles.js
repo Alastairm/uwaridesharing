@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
-import EStyleSheet from 'react-native-extended-stylesheet';
+// import EStyleSheet from 'react-native-extended-stylesheet';
 
-const Styles = EStyleSheet.create({
+const Styles = StyleSheet.create({
+
   // Comment explaining purpose of style class.
   // And where in the app it should be used.
 
@@ -25,33 +26,49 @@ const Styles = EStyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: '2%', // relative spacing between button and bottom of screen
   },
-  // baseText: { unable to find location in app
-  //   fontFamily: 'Cochin',
-  // },
+  errorText: {
+    color: 'red',
+  },
   titleText: { // FareEstimation
     fontFamily: 'Cochin',
-    fontSize: '1.5rem',
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'left',
   },
   bodyText: { // FareEstimation
-    fontSize: '1rem',
+    fontSize: 20,
     textAlign: 'left',
   },
   backgroundImage: { // Welcome.js
     flex: 1, // background expands to full vertical width
   },
   welcomeTitle: { // Welcome.js
-    fontSize: '5.5rem', // relative sizing for title
+    fontSize: 80,
     color: 'navy',
     textAlign: 'center',
     marginTop: '2%',
   },
   welcomeSubtitle: { // Welcome.js
-    fontSize: '1.5rem', // relative sizing for subtitle
+    fontSize: 30,
     color: 'navy',
     textAlign: 'center',
   },
 });
 
-export default Styles;
+const NativeStyles = {
+  inButton: {
+    backgroundColor: '#faba12',
+    marginTop: '60%',
+    marginBottom: '5%',
+  },
+  button: {
+    marginTop: '5%',
+    marginBottom: '5%',
+  },
+  scene: { // generic view style
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+};
+
+export { Styles, NativeStyles };
