@@ -151,7 +151,6 @@ exports[`Matches snapshot 1`] = `
             editable={true}
             onBlur={[Function]}
             onChangeText={[Function]}
-            onChangeTextValue={[Function]}
             onFocus={[Function]}
             placeholderTextColor="#575757"
             style={
