@@ -12,12 +12,12 @@ EStyleSheet.build({
 export default class App extends Component {
   constructor(props) {
     super(props);
-    // firebase.initializeApp({
-    //   apiKey: 'AIzaSyDwBIng4cVUjQAkgu3_NgiO0gKP3zuFnXI',
-    //   authDomain: 'uwaridesharing.firebaseapp.com',
-    //   databaseURL: 'https://uwaridesharing.firebaseio.com',
-    //   storageBucket: 'uwaridesharing.appspot.com',
-    // });
+    firebase.initializeApp({
+      apiKey: 'AIzaSyDwBIng4cVUjQAkgu3_NgiO0gKP3zuFnXI',
+      authDomain: 'uwaridesharing.firebaseapp.com',
+      databaseURL: 'https://uwaridesharing.firebaseio.com',
+      storageBucket: 'uwaridesharing.appspot.com',
+    });
   }
   render() {
     return (
