@@ -60,8 +60,17 @@ export default class SignUp extends Component {
   }
   async onNext() {
     // Navigator should use context instead of props.
-    await firebase.auth()
-      .createUserWithEmailAndPassword(this.state.pass, this.state.email);
+    firebase.auth()
+      .createUserWithEmailAndPassword(this.state.user.email, this.state.user.pass)
+      .then((user) => {
+        firebase.database().ref(`users/${user.uid}`).set({
+          name: this.state.user.name,
+          email: this.state.user.email,
+          phone: this.state.user.phone,
+        });
+        AsyncStorage.setItem('user.uid', user.uid);
+      });
+
     // eslint-disable-next-line
     this.props.navigator.push({
       component: Map,
@@ -73,6 +82,10 @@ export default class SignUp extends Component {
     this.setState({ user });
   }
   async onSubmit() {
+    if (!(this.state.isValid.name && this.state.isValid.email &&
+          this.state.isValid.phone && this.state.isValid.pass)) {
+      return;
+    }
     const hasName = this.state.user.name;
     const hasEmail = this.state.user.email;
     const hasPhone = this.state.user.phone;
@@ -98,36 +111,28 @@ export default class SignUp extends Component {
     isValid[fieldName] = validStatus;
     this.setState(isValid);
   }
-  setName(value) {
-    this.setUserField('name', value);
-  }
-  setEmail(value) {
-    this.setUserField('email', value);
-  }
-  setPhone(value) {
-    this.setUserField('phone', value);
-  }
-  setPass(value) {
-    this.setUserField('pass', value);
+  validateName(text) {
+    // I give up on regex for this sree
+    const valid = text.length > 0;
+    this.setIsValid('name', valid);
+    this.setUserField('name', text);
   }
   validateEmail(text) {
     const emailRegex = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@(student\.|)(uwa\.edu\.au)$/;
     const valid = emailRegex.test(text);
     this.setIsValid('email', valid);
-  }
-  validateName(text) {
-    // I give up on regex for this sree
-    const valid = text.length > 0;
-    this.setIsValid('name', valid);
+    this.setUserField('email', text);
   }
   validatePhone(text) {
     const phoneRegex = /04[0-9]{8}$/;
     const valid = phoneRegex.test(text);
     this.setIsValid('phone', valid);
+    this.setUserField('phone', text);
   }
   validatePass(text) {
-    const valid = text.length > 8;
+    const valid = text.length > 5;
     this.setIsValid('pass', valid);
+    this.setUserField('pass', text);
   }
   nameFilled() {
     this.setIsfilled('name', true);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigator } from 'react-native';
+import { AsyncStorage, Navigator } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import * as firebase from 'firebase';
 
@@ -17,6 +17,15 @@ export default class App extends Component {
       authDomain: 'uwaridesharing.firebaseapp.com',
       databaseURL: 'https://uwaridesharing.firebaseio.com',
       storageBucket: 'uwaridesharing.appspot.com',
+    });
+    AsyncStorage.removeItem('user.uid');
+    console.log("If you can read this your debugger is working (unless you're looking at the source code)");
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        AsyncStorage.setItem('user.uid', user.uid);
+        console.log(user.uid);
+        console.log(JSON.stringify(user));
+      }
     });
   }
   render() {

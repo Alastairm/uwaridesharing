@@ -17,8 +17,11 @@ export default class Welcome extends Component {
   }
   async signUp() {
     try {
+      console.log('debugger is working..');
+      const uid = await AsyncStorage.getItem('user.uid');
+      console.log(uid);
       const userSaved = await AsyncStorage.getItem('user.saved');
-      if (userSaved === 'true') {
+      if (uid !== null) {
         this.props.navigator.push({
           component: Map,
         });
