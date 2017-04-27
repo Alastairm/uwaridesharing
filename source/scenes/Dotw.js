@@ -1,9 +1,15 @@
-// temporry solution for the demo, just in case we do not finish
+
 import React, { Component } from 'react';
 import { WebView } from 'react-native';
 import { Header, Container, Title, Content, Body } from 'native-base';
 
 export default class Dotw extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: 'www.google.com',
+    };
+  }
   render() {
     return (
       <Container>
