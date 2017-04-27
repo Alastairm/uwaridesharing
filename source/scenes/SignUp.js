@@ -10,6 +10,7 @@ import {
   Button,
   Icon,
 } from 'native-base';
+import * as firebase from 'firebase';
 
 import { Styles } from './Styles.js';
 import Map from './Map.js';
@@ -50,13 +51,17 @@ export default class SignUp extends Component {
     this.validateName = this.validateName.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
+    this.validatePass = this.validatePass.bind(this);
     this.nameFilled = this.nameFilled.bind(this);
     this.emailFilled = this.emailFilled.bind(this);
     this.phoneFilled = this.phoneFilled.bind(this);
+    this.passFilled = this.passFilled.bind(this);
     this.save = this.save.bind(this);
   }
-  onNext() {
+  async onNext() {
     // Navigator should use context instead of props.
+    await firebase.auth()
+      .createUserWithEmailAndPassword(this.state.pass, this.state.email);
     // eslint-disable-next-line
     this.props.navigator.push({
       component: Map,
@@ -186,6 +191,18 @@ export default class SignUp extends Component {
               <Input
                 onChangeText={this.validatePhone}
                 onBlur={this.phoneFilled}
+              />
+            </Item>
+            <Item
+              floatingLabel
+              success={this.state.isFilled.pass && this.state.isValid.pass}
+              error={this.state.isFilled.pass && !this.state.isValid.pass}
+            >
+              <Icon active name="key" />
+              <Label>Password</Label>
+              <Input
+                onChangeText={this.validatePass}
+                onBlur={this.passFilled}
               />
             </Item>
           </Form>

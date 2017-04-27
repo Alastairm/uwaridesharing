@@ -52,7 +52,7 @@ export default class Map extends Component {
           region={this.state.region}
           onRegionChange={this.onRegionChange}
         />
-        <Icon name="map-marker" size={50} color="#0060C0" />
+        <Icon name="pin" size={50} color="#0060C0" />
         <View style={Styles.scene}>
           <View style={Styles.header}>
             <LocationSearch onPress={this.onLocationSeach} />
