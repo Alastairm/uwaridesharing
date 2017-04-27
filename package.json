@@ -5,16 +5,15 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "eslint source/** && flow && jest --verbose",
-    "build": "mkdir -p lib && babel source/ -D lib",
-    "prepublish": "npm run build",
+    "prepare": "mkdir -p lib && babel source/ -D lib",
     "eslint": "eslint source/**",
     "flow": "flow",
     "jest": "jest --verbose"
   },
   "dependencies": {
-    "native-base": "^2.1.0",
-    "react": "~15.4.1",
-    "react-native": "0.42.3",
+    "native-base": "~2.0.13",
+    "react": "~15.4.2",
+    "react-native": "0.42.0",
     "react-native-button": "^1.8.2",
     "react-native-credit-card-input": "^0.3.3",
     "react-native-extended-stylesheet": "^0.4.0",
