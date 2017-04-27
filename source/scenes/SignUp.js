@@ -24,6 +24,7 @@ export default class SignUp extends Component {
         name: false,
         email: false,
         phone: false,
+        pass: false,
       },
       valid: false,
       showErrors: false,
@@ -31,16 +32,19 @@ export default class SignUp extends Component {
         name: false,
         email: false,
         phone: false,
+        pass: false,
       },
       isValid: {
         name: false,
         email: false,
         phone: false,
+        pass: false,
       },
     };
     this.onNext = this.onNext.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setUserField = this.setUserField.bind(this);
     this.setIsValid = this.setIsValid.bind(this);
     this.setIsfilled = this.setIsfilled.bind(this);
     this.validateName = this.validateName.bind(this);
@@ -74,6 +78,11 @@ export default class SignUp extends Component {
       this.setState({ showErrors: true });
     }
   }
+  setUserField(fieldName, fieldValue) {
+    const user = this.state.user;
+    user[fieldName] = fieldValue;
+    this.setState(user);
+  }
   setIsfilled(fieldName, filledStatus) {
     const isFilled = this.state.isFilled;
     isFilled[fieldName] = filledStatus;
@@ -83,6 +92,18 @@ export default class SignUp extends Component {
     const isValid = this.state.isValid;
     isValid[fieldName] = validStatus;
     this.setState(isValid);
+  }
+  setName(value) {
+    this.setUserField('name', value);
+  }
+  setEmail(value) {
+    this.setUserField('email', value);
+  }
+  setPhone(value) {
+    this.setUserField('phone', value);
+  }
+  setPass(value) {
+    this.setUserField('pass', value);
   }
   validateEmail(text) {
     const emailRegex = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@(student\.|)(uwa\.edu\.au)$/;
@@ -99,22 +120,27 @@ export default class SignUp extends Component {
     const valid = phoneRegex.test(text);
     this.setIsValid('phone', valid);
   }
+  validatePass(text) {
+    const valid = text.length > 8;
+    this.setIsValid('pass', valid);
+  }
   nameFilled() {
-    const valid = true;
-    this.setIsfilled('name', valid);
+    this.setIsfilled('name', true);
   }
   emailFilled() {
-    const valid = true;
-    this.setIsfilled('email', valid);
+    this.setIsfilled('email', true);
   }
   phoneFilled() {
-    const valid = true;
-    this.setIsfilled('phone', valid);
+    this.setIsfilled('phone', true);
+  }
+  passFilled() {
+    this.setIsfilled('pass', true);
   }
   async save() {
     await AsyncStorage.setItem('user.saved', 'true');
     await AsyncStorage.setItem('user.name', this.state.user.name);
     await AsyncStorage.setItem('user.email', this.state.user.email);
+    await AsyncStorage.setItem('user.phone', this.state.user.phone);
     await AsyncStorage.setItem('user.phone', this.state.user.phone);
   }
 
