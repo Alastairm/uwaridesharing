@@ -3,21 +3,19 @@ import { AsyncStorage, Image, Text, View } from 'react-native';
 import { Container, Button, Grid, Col } from 'native-base';
 import { Styles, NativeStyles } from './Styles.js';
 
-import UserForm from './UserForm.js';
+import SignUp from './SignUp.js';
+import SignIn from './SignIn.js';
 import Map from './Map.js';
-import SpatulaTest from './SpatulaTest.js';
-
-// import Button from '../components/Button.js';
 
 const backgroundImage = { uri: 'https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg' };
 
 export default class Welcome extends Component {
   constructor(props) {
     super(props);
-    this.onNext = this.onNext.bind(this);
-    this.onApiTest = this.onApiTest.bind(this);
+    this.signUp = this.signUp.bind(this);
+    this.signIn = this.signIn.bind(this);
   }
-  async onNext() {
+  async signUp() {
     try {
       const userSaved = await AsyncStorage.getItem('user.saved');
       if (userSaved === 'true') {
@@ -26,22 +24,22 @@ export default class Welcome extends Component {
         });
       } else {
         this.props.navigator.push({
-          component: UserForm,
+          component: SignUp,
         });
       }
     } catch (error) {
       // Navigator should use context instead of props.
       // eslint-disable-next-line
       this.props.navigator.push({
-        component: UserForm,
+        component: SignUp,
       });
     }
   }
-  onApiTest() {
+  signIn() {
     // Navigator should use context instead of props.
     // eslint-disable-next-line
     this.props.navigator.push({
-      component: SpatulaTest,
+      component: SignIn,
     });
   }
   render() {
@@ -58,14 +56,11 @@ export default class Welcome extends Component {
             <Grid>
               <Col size={25} />
               <Col size={50}>
-                <Button block bordered rounded style={NativeStyles.inButton} onPress={this.onNext}>
+                <Button block bordered rounded style={NativeStyles.button} backgroundColor={'#fff'} onPress={this.signIn}>
                   <Text> Sign In </Text>
                 </Button>
-                <Button block bordered rounded style={NativeStyles.button} backgroundColor={'#fff'} onPress={this.onApiTest}>
-                  <Text> API Test </Text>
-                </Button>
-                <Button block bordered rounded style={NativeStyles.button} backgroundColor={'#fff'} onPress={AsyncStorage.clear}>
-                  <Text> Clear App Data </Text>
+                <Button block bordered rounded style={NativeStyles.inButton} onPress={this.signUp}>
+                  <Text> Sign Up </Text>
                 </Button>
               </Col>
               <Col size={25} />

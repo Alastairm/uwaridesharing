@@ -11,11 +11,11 @@ import {
   Icon,
 } from 'native-base';
 
-import Styles from './Styles.js';
+import { Styles } from './Styles.js';
 import Map from './Map.js';
 
 
-export default class UserForm extends Component {
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
     // ToDO: Check if user information is already saved
