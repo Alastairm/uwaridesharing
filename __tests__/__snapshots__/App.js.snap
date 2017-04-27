@@ -190,7 +190,7 @@ exports[`renders correctly 1`] = `
                     Object {
                       "alignItems": "center",
                       "alignSelf": "stretch",
-                      "backgroundColor": "#faba12",
+                      "backgroundColor": "transparent",
                       "borderColor": "#007aff",
                       "borderRadius": 57,
                       "borderWidth": 1,
@@ -199,7 +199,7 @@ exports[`renders correctly 1`] = `
                       "height": 45,
                       "justifyContent": "center",
                       "marginBottom": "5%",
-                      "marginTop": "60%",
+                      "marginTop": "5%",
                       "opacity": 1,
                       "paddingBottom": 6,
                       "paddingLeft": 26,
@@ -470,8 +470,7 @@ exports[`renders correctly 1`] = `
                 renderScrollComponent={[Function]}
                 style={
                   Object {
-                    "marginLeft": -15,
-                    "marginRight": -15,
+                    "marginHorizontal": -15,
                     "marginTop": 15,
                   }
                 }
