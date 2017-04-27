@@ -11,7 +11,7 @@ import {
   Icon,
 } from 'native-base';
 
-import Styles from './Styles.js';
+import { Styles } from './Styles.js';
 import Map from './Map.js';
 
 
