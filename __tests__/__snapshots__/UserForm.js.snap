@@ -161,6 +161,7 @@ exports[`Matches snapshot 1`] = `
                 "fontSize": 17,
                 "height": 60,
                 "lineHeight": 24,
+                "marginLeft": undefined,
                 "paddingLeft": null,
                 "top": 10,
               }
@@ -285,6 +286,7 @@ exports[`Matches snapshot 1`] = `
                 "fontSize": 17,
                 "height": 60,
                 "lineHeight": 24,
+                "marginLeft": undefined,
                 "paddingLeft": null,
                 "top": 10,
               }
@@ -409,6 +411,7 @@ exports[`Matches snapshot 1`] = `
                 "fontSize": 17,
                 "height": 60,
                 "lineHeight": 24,
+                "marginLeft": undefined,
                 "paddingLeft": null,
                 "top": 10,
               }
@@ -459,7 +462,7 @@ exports[`Matches snapshot 1`] = `
           allowFontScaling={true}
           ellipsizeMode="tail"
         >
-           submit
+           submit 
         </Text>
       </View>
     </View>
