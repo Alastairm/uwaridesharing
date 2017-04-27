@@ -76,10 +76,38 @@ exports[`Matches snapshot 1`] = `
           testID={undefined}
           tvParallaxProperties={undefined}
         >
+          <Text
+            accessible={true}
+            active={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 12,
+                },
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "paddingRight": 8,
+                  "top": 6,
+                },
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+            virtual={undefined}
+          >
+            
+          </Text>
           <View
             style={
               Object {
-                "left": 0,
+                "left": 22,
                 "opacity": 1,
                 "paddingBottom": undefined,
                 "paddingTop": undefined,
@@ -123,6 +151,7 @@ exports[`Matches snapshot 1`] = `
             editable={true}
             onBlur={[Function]}
             onChangeText={[Function]}
+            onChangeTextValue={[Function]}
             onFocus={[Function]}
             placeholderTextColor="#575757"
             style={
@@ -138,7 +167,6 @@ exports[`Matches snapshot 1`] = `
               }
             }
             underlineColorAndroid="rgba(0,0,0,0)"
-            value=""
             virtual={undefined}
           />
         </View>
@@ -174,10 +202,38 @@ exports[`Matches snapshot 1`] = `
           testID={undefined}
           tvParallaxProperties={undefined}
         >
+          <Text
+            accessible={true}
+            active={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 12,
+                },
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "paddingRight": 8,
+                  "top": 6,
+                },
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+            virtual={undefined}
+          >
+            
+          </Text>
           <View
             style={
               Object {
-                "left": 0,
+                "left": 22,
                 "opacity": 1,
                 "paddingBottom": undefined,
                 "paddingTop": undefined,
@@ -236,7 +292,6 @@ exports[`Matches snapshot 1`] = `
               }
             }
             underlineColorAndroid="rgba(0,0,0,0)"
-            value=""
             virtual={undefined}
           />
         </View>
@@ -272,10 +327,38 @@ exports[`Matches snapshot 1`] = `
           testID={undefined}
           tvParallaxProperties={undefined}
         >
+          <Text
+            accessible={true}
+            active={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 12,
+                },
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "paddingRight": 8,
+                  "top": 6,
+                },
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+            virtual={undefined}
+          >
+            
+          </Text>
           <View
             style={
               Object {
-                "left": 0,
+                "left": 22,
                 "opacity": 1,
                 "paddingBottom": undefined,
                 "paddingTop": undefined,
@@ -311,7 +394,7 @@ exports[`Matches snapshot 1`] = `
                 }
                 virtual={undefined}
               >
-                Phone
+                Mobile
               </Text>
             </Text>
           </View>
@@ -334,54 +417,53 @@ exports[`Matches snapshot 1`] = `
               }
             }
             underlineColorAndroid="rgba(0,0,0,0)"
-            value=""
             virtual={undefined}
           />
         </View>
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "alignSelf": "flex-start",
-              "backgroundColor": "#62B1F6",
-              "borderColor": "#007aff",
-              "borderRadius": 57,
-              "borderWidth": null,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 60,
-              "justifyContent": "space-between",
-              "opacity": 1,
-              "paddingBottom": 6,
-              "paddingLeft": 26,
-              "paddingRight": 26,
-              "paddingTop": 6,
-            }
+      </View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#62B1F6",
+            "borderColor": "#007aff",
+            "borderRadius": 57,
+            "borderWidth": null,
+            "elevation": 2,
+            "flexDirection": "row",
+            "height": 60,
+            "justifyContent": "space-between",
+            "opacity": 1,
+            "paddingBottom": 6,
+            "paddingLeft": 26,
+            "paddingRight": 26,
+            "paddingTop": 6,
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
-             submit 
-          </Text>
-        </View>
+           submit 
+        </Text>
       </View>
     </View>
   </RCTScrollView>
