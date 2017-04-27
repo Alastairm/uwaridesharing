@@ -56,11 +56,6 @@ const Styles = StyleSheet.create({
 });
 
 const NativeStyles = {
-  inButton: {
-    backgroundColor: '#faba12',
-    marginTop: '60%',
-    marginBottom: '5%',
-  },
   button: {
     marginTop: '5%',
     marginBottom: '5%',

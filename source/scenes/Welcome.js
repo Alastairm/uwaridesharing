@@ -58,7 +58,7 @@ export default class Welcome extends Component {
             <Grid>
               <Col size={25} />
               <Col size={50}>
-                <Button block bordered rounded style={NativeStyles.inButton} onPress={this.onNext}>
+                <Button block bordered rounded style={NativeStyles.button} backgroundColor={'#faba12'} marginTop={'60%'} onPress={this.onNext}>
                   <Text> Sign In </Text>
                 </Button>
                 <Button block bordered rounded style={NativeStyles.button} backgroundColor={'#fff'} onPress={this.onApiTest}>
