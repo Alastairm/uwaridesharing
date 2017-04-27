@@ -90,8 +90,8 @@ export default class UserForm extends Component {
     this.setIsValid('email', valid);
   }
   validateName(text) {
-    const nameRegex = /[\u0000-\uFFFF]/;// Matches all unicode strings
-    const valid = nameRegex.test(text);
+    // I give up on regex for this sree
+    const valid = text.length > 0;
     this.setIsValid('name', valid);
   }
   validatePhone(text) {
@@ -134,7 +134,7 @@ export default class UserForm extends Component {
               <Icon active name="person" />
               <Label>Name</Label>
               <Input
-                onChangeTextValue={this.validateName}
+                onChangeText={this.validateName}
                 onBlur={this.nameFilled}
               />
             </Item>
@@ -191,7 +191,7 @@ function NameErrorMessage({ isFilled, isValid }) {
   if (show) {
     return (
       <Text style={Styles.errorText} >
-        Name contains disallowed characters.
+        Please enter a name.
       </Text>
     );
   }
