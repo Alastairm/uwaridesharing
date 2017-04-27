@@ -132,8 +132,8 @@ exports[`Matches snapshot 1`] = `
                 "fontSize": 17,
                 "height": 60,
                 "lineHeight": 24,
+                "marginLeft": undefined,
                 "paddingLeft": null,
-                "paddingRight": 5,
                 "top": 10,
               }
             }
@@ -230,8 +230,8 @@ exports[`Matches snapshot 1`] = `
                 "fontSize": 17,
                 "height": 60,
                 "lineHeight": 24,
+                "marginLeft": undefined,
                 "paddingLeft": null,
-                "paddingRight": 5,
                 "top": 10,
               }
             }
@@ -328,8 +328,8 @@ exports[`Matches snapshot 1`] = `
                 "fontSize": 17,
                 "height": 60,
                 "lineHeight": 24,
+                "marginLeft": undefined,
                 "paddingLeft": null,
-                "paddingRight": 5,
                 "top": 10,
               }
             }
@@ -520,7 +520,8 @@ exports[`Matches snapshot 1`] = `
           renderScrollComponent={[Function]}
           style={
             Object {
-              "marginHorizontal": -15,
+              "marginLeft": -15,
+              "marginRight": -15,
               "marginTop": 15,
             }
           }

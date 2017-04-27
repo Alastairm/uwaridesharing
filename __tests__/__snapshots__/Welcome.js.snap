@@ -389,7 +389,8 @@ exports[`Matches snapshot 1`] = `
           renderScrollComponent={[Function]}
           style={
             Object {
-              "marginHorizontal": -15,
+              "marginLeft": -15,
+              "marginRight": -15,
               "marginTop": 15,
             }
           }
