@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { AsyncStorage, Image, Text, View } from 'react-native';
 import { Container, Button, Grid, Col } from 'native-base';
-import * as firebase from 'firebase';
 
 import { Styles, NativeStyles } from './Styles.js';
 import SignUp from './SignUp.js';
