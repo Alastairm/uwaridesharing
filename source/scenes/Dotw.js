@@ -1,31 +1,38 @@
 
 import React, { Component } from 'react';
-import { WebView } from 'react-native';
-import { Header, Container, Title, Content, Body } from 'native-base';
+import { AsyncStorage, Text, WebView } from 'react-native';
+import * as firebase from 'firebase';
 
 export default class Dotw extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: 'www.google.com',
+      trackingReady: false,
+      trackingLink: null,
+      title: 'booking your ride',
     };
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+  async componentDidMount() {
+    const uid = await AsyncStorage.getItem('user.uid');
+    const ref = await firebase.database().ref(`users/${uid}/`);
+    ref.once('child_added').then((event) => {
+      const tracking = event.val().tracking;
+      this.setState({ trackingLink: tracking });
+      this.setState({ trackingReady: true });
+      this.setState({ title: 'What should title be' });
+    });
   }
   render() {
-    return (
-      <Container>
-        <Header>
-          <Body>
-            <Title>Your driver is on their way</Title>
-          </Body>
-        </Header>
+    const trackingPage = (<WebView
+      source={{ uri: this.state.trackingLink }}
+      style={{ marginTop: 20 }}
+    />);
+    const placeHolder = <Text> Waiting... </Text>;
+    const content = this.state.trackingReady ? trackingPage : placeHolder;
 
-        <Content>
-          <WebView
-            source={{ uri: 'http://www.google.com' }}
-            style={{ marginTop: 20 }}
-          />
-        </Content>
-      </Container>
+    return (
+      content
     );
   }
 }
