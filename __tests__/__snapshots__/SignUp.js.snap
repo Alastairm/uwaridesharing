@@ -416,6 +416,130 @@ exports[`Matches snapshot 1`] = `
             virtual={undefined}
           />
         </View>
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderColor": "#D9D5DC",
+              "borderLeftWidth": 0,
+              "borderRightWidth": 0,
+              "borderTopWidth": 0,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "marginLeft": 15,
+              "marginTop": 15,
+              "opacity": 1,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <Text
+            accessible={true}
+            active={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 12,
+                },
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "paddingRight": 8,
+                  "top": 6,
+                },
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+            virtual={undefined}
+          >
+            
+          </Text>
+          <View
+            style={
+              Object {
+                "left": 22,
+                "opacity": 1,
+                "paddingBottom": undefined,
+                "paddingTop": undefined,
+                "position": "absolute",
+                "right": 0,
+                "top": 18,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#575757",
+                  "fontSize": 17,
+                  "left": 0,
+                  "paddingRight": 5,
+                  "top": 8,
+                }
+              }
+              virtual={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontSize": 17,
+                  }
+                }
+                virtual={undefined}
+              >
+                Password
+              </Text>
+            </Text>
+          </View>
+          <TextInput
+            editable={true}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholderTextColor="#575757"
+            style={
+              Object {
+                "color": "#000",
+                "flex": 1,
+                "fontSize": 17,
+                "height": 60,
+                "lineHeight": 24,
+                "paddingLeft": null,
+                "top": 10,
+              }
+            }
+            underlineColorAndroid="rgba(0,0,0,0)"
+            virtual={undefined}
+          />
+        </View>
       </View>
       <View
         accessibilityComponentType={undefined}
