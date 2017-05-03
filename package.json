@@ -41,6 +41,7 @@
   },
   "jest": {
     "preset": "react-native",
+    "testEnvironment": "node",
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|uwaridesharing|@shoutem)/"
     ]
