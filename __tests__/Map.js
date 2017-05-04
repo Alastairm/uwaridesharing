@@ -7,6 +7,8 @@ import Map from '../source/scenes/Map.js';
 require('firebase');
 
 // Need to mock react-native-maps.
+jest.mock('firebase');
+
 jest.mock('react-native-maps', () => 'MapView');
 
 test('Matches snapshot', () => {

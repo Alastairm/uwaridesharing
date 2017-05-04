@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Image, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { Container, Button, Grid, Col } from 'native-base';
 
 import { Styles, NativeStyles } from './Styles.js';
 import SignUp from './SignUp.js';
 import SignIn from './SignIn.js';
-import Map from './Map.js';
 
 const backgroundImage = { uri: 'https://fleeteng-static.s3.amazonaws.com/assets/background-081a9027c8c821541bf2d7816138fc87.jpg' };
 
@@ -16,27 +15,10 @@ export default class Welcome extends Component {
     this.signIn = this.signIn.bind(this);
   }
   async signUp() {
-    try {
-      // console.log('debugger is working..');
-      const uid = await AsyncStorage.getItem('user.uid');
-      // console.log(uid);
-      // const userSaved = await AsyncStorage.getItem('user.saved');
-      if (uid !== null) {
-        this.props.navigator.push({
-          component: Map,
-        });
-      } else {
-        this.props.navigator.push({
-          component: SignUp,
-        });
-      }
-    } catch (error) {
-      // Navigator should use context instead of props.
-      // eslint-disable-next-line
-      this.props.navigator.push({
-        component: SignUp,
-      });
-    }
+    // eslint-disable-next-line
+    this.props.navigator.push({
+      component: SignUp,
+    });
   }
   signIn() {
     // Navigator should use context instead of props.

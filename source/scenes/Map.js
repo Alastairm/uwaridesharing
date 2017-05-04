@@ -29,14 +29,12 @@ export default class Map extends Component {
     this.pushJob = this.pushJob.bind(this);
   }
   async onNext() {
-    await AsyncStorage.setItem('endpoint.lat', String(this.state.region.latitude));
-    await AsyncStorage.setItem('endpoint.lon', String(this.state.region.longitude));
-    // Navigator should use context instead of props.
-    // eslint-disable-next-line
-    this.pushJob();
-    this.props.navigator.push({
-      component: Dotw,
-    });
+    const uid = await AsyncStorage.getItem('user.uid');
+    const ref = await firebase.database().ref(`users/${uid}/`);
+    // Create dispatch callback fn to show tracking once job is in spatula.
+
+    // Push the job to Firebase backend.
+    this.pushJob(ref);
   }
   onRegionChange(region) {
     this.setState({ region });
@@ -48,11 +46,16 @@ export default class Map extends Component {
     region.longitude = parseFloat(details.geometry.location.lng);
     this.setState({ region });
   }
-  async pushJob() {
-    const uid = await AsyncStorage.getItem('user.uid');
-    firebase.database().ref(`users/${uid}/job`).set({
+  async pushJob(ref) {
+    ref.child('job').set({
       latitude: this.state.region.latitude,
       longitude: this.state.region.longitude,
+    }).then(() => {
+      // Navigator should use context instead of props.
+      // eslint-disable-next-line
+      this.props.navigator.push({
+        component: Dotw,
+      });
     });
   }
   render() {

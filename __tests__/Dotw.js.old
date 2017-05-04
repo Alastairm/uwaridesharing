@@ -2,13 +2,14 @@ import 'react-native';
 import React from 'react';
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import SignIn from '../source/scenes/SignIn.js';
+import Dotw from '../source/scenes/Dotw.js';
 
-require('firebase');
+jest.mock('firebase');
+
 
 test('Matches snapshot', () => {
   const render = renderer.create(
-    <SignIn />,
+    <Dotw />,
   ).toJSON();
   expect(render).toMatchSnapshot();
 });
