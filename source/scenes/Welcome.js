@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Image, Text, View } from 'react-native';
 import { Container, Button, Grid, Col } from 'native-base';
-import { Styles, NativeStyles } from './Styles.js';
 
+import { Styles, NativeStyles } from './Styles.js';
 import SignUp from './SignUp.js';
 import SignIn from './SignIn.js';
 

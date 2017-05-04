@@ -4,8 +4,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import SignIn from '../source/scenes/SignIn.js';
 
-jest.mock('firebase');
-
+require('firebase');
 
 test('Matches snapshot', () => {
   const render = renderer.create(

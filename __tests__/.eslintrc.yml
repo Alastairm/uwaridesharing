@@ -1,0 +1,4 @@
+globals:
+  test: false
+  expect: false
+  jest: false

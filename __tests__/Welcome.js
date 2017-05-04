@@ -4,7 +4,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Welcome from '../source/scenes/Welcome.js';
 
-jest.mock('firebase');
+require('firebase');
 
 
 test('Matches snapshot', () => {
