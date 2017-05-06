@@ -58,7 +58,7 @@ exports[`Matches snapshot 1`] = `
         style={
           Object {
             "color": "navy",
-            "fontSize": 30,
+            "fontSize": 25,
             "textAlign": "center",
           }
         }
@@ -74,19 +74,19 @@ exports[`Matches snapshot 1`] = `
         }
       >
         <View
-          size={25}
+          size={20}
           style={
             Object {
-              "flex": 25,
+              "flex": 20,
               "flexDirection": "column",
             }
           }
         />
         <View
-          size={50}
+          size={60}
           style={
             Object {
-              "flex": 50,
+              "flex": 60,
               "flexDirection": "column",
             }
           }
@@ -115,7 +115,7 @@ exports[`Matches snapshot 1`] = `
                 "borderWidth": 1,
                 "elevation": null,
                 "flexDirection": "row",
-                "height": 45,
+                "height": 60,
                 "justifyContent": "center",
                 "marginBottom": "5%",
                 "marginTop": "5%",
@@ -137,6 +137,11 @@ exports[`Matches snapshot 1`] = `
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
             >
                Sign In 
             </Text>
@@ -159,16 +164,14 @@ exports[`Matches snapshot 1`] = `
               Object {
                 "alignItems": "center",
                 "alignSelf": "stretch",
-                "backgroundColor": "#faba12",
+                "backgroundColor": "transparent",
                 "borderColor": "#007aff",
                 "borderRadius": 57,
                 "borderWidth": 1,
                 "elevation": null,
                 "flexDirection": "row",
-                "height": 45,
+                "height": 60,
                 "justifyContent": "center",
-                "marginBottom": "5%",
-                "marginTop": "60%",
                 "opacity": 1,
                 "paddingBottom": 6,
                 "paddingLeft": 26,
@@ -187,16 +190,21 @@ exports[`Matches snapshot 1`] = `
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
             >
                Sign Up 
             </Text>
           </View>
         </View>
         <View
-          size={25}
+          size={20}
           style={
             Object {
-              "flex": 25,
+              "flex": 20,
               "flexDirection": "column",
             }
           }

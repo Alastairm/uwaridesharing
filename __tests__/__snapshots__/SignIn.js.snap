@@ -241,48 +241,87 @@ exports[`Matches snapshot 1`] = `
         </View>
       </View>
       <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#62B1F6",
-            "borderColor": "#007aff",
-            "borderRadius": 57,
-            "borderWidth": null,
-            "elevation": 2,
+            "flex": 1,
             "flexDirection": "row",
-            "height": 60,
-            "justifyContent": "space-between",
-            "opacity": 1,
-            "paddingBottom": 6,
-            "paddingLeft": 26,
-            "paddingRight": 26,
-            "paddingTop": 6,
           }
         }
-        testID={undefined}
-        tvParallaxProperties={undefined}
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+        <View
+          size={25}
+          style={
+            Object {
+              "flex": 25,
+              "flexDirection": "column",
+            }
+          }
+        />
+        <View
+          size={50}
+          style={
+            Object {
+              "flex": 50,
+              "flexDirection": "column",
+            }
+          }
         >
-           Login 
-        </Text>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "backgroundColor": "#007aff",
+                "borderColor": "#007aff",
+                "borderRadius": 57,
+                "borderWidth": null,
+                "elevation": 2,
+                "flexDirection": "row",
+                "height": 45,
+                "justifyContent": "center",
+                "marginBottom": "5%",
+                "marginTop": "5%",
+                "opacity": 1,
+                "paddingBottom": 6,
+                "paddingLeft": 26,
+                "paddingRight": 26,
+                "paddingTop": 6,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+            >
+               LOGIN 
+            </Text>
+          </View>
+        </View>
+        <View
+          size={25}
+          style={
+            Object {
+              "flex": 25,
+              "flexDirection": "column",
+            }
+          }
+        />
       </View>
     </View>
   </RCTScrollView>

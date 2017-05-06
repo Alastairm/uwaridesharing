@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { AsyncStorage, StyleSheet, View } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
+import { Body, Button, Container, Header, Right, Title } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
 import * as firebase from 'firebase';
 
-import Button from '../components/Button.js';
+// import Button from '../components/Button.js';
 import LocationSearch from '../components/LocationSearch.js';
-import { Styles } from './Styles.js';
+import { Styles, NativeStyles } from './Styles.js';
 
 import Dotw from './Dotw.js';
 
@@ -60,27 +61,36 @@ export default class Map extends Component {
   }
   render() {
     return (
-      <View style={Styles.mapScene}>
-        <MapView
-          style={{ ...StyleSheet.absoluteFillObject }}
-          region={this.state.region}
-          onRegionChange={this.onRegionChange}
-        />
-        <Icon name="map-marker" size={50} color="#0060C0" />
-        <View style={Styles.scene}>
-          <View style={Styles.header}>
-            <LocationSearch onPress={this.onLocationSeach} />
-          </View>
-          <View style={Styles.footer}>
-            <Button
-              backgroundColor={'#0060C0'}
-              onPress={this.onNext}
-            >
-              Set Pickup Location
+      <Container>
+        <Header>
+          <Body>
+            <Title>Book a Ride</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon name="bars" />
             </Button>
+          </Right>
+        </Header>
+        <View style={Styles.mapScene}>
+          <MapView
+            style={{ ...StyleSheet.absoluteFillObject }}
+            region={this.state.region}
+            onRegionChange={this.onRegionChange}
+          />
+          <Icon name="map-marker" size={50} color="#0060C0" />
+          <View style={Styles.scene}>
+            <View style={Styles.header}>
+              <LocationSearch onPress={this.onLocationSeach} justifyContent={'flex-start'} />
+            </View>
+            <View style={Styles.footer}>
+              <Button rounded style={NativeStyles.button} marginLeft={'25%'} backgroundColor={'#0060C0'} onPress={this.onNext}>
+                <Text> Set Pickup Location </Text>
+              </Button>
+            </View>
           </View>
         </View>
-      </View>
+      </Container>
     );
   }
 }

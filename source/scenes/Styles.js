@@ -24,6 +24,7 @@ const Styles = StyleSheet.create({
   },
   footer: {
     justifyContent: 'flex-end',
+    alignItems: 'center',
     marginBottom: '2%', // relative spacing between button and bottom of screen
   },
   errorText: {
@@ -42,25 +43,24 @@ const Styles = StyleSheet.create({
   backgroundImage: { // Welcome.js
     flex: 1, // background expands to full vertical width
   },
+  buttonText: {
+    fontSize: 20,
+  },
   welcomeTitle: { // Welcome.js
     fontSize: 80,
+    // fontFamily: 'alcubierre',
     color: 'navy',
     textAlign: 'center',
     marginTop: '2%',
   },
   welcomeSubtitle: { // Welcome.js
-    fontSize: 30,
+    fontSize: 25,
     color: 'navy',
     textAlign: 'center',
   },
 });
 
 const NativeStyles = {
-  inButton: {
-    backgroundColor: '#faba12',
-    marginTop: '60%',
-    marginBottom: '5%',
-  },
   button: {
     marginTop: '5%',
     marginBottom: '5%',

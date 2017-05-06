@@ -39,16 +39,16 @@ export default class Welcome extends Component {
             <Text style={Styles.welcomeTitle}> UniRide </Text>
             <Text style={Styles.welcomeSubtitle}> UWA Rideshare </Text>
             <Grid>
-              <Col size={25} />
-              <Col size={50}>
-                <Button block bordered rounded style={NativeStyles.button} backgroundColor={'#fff'} onPress={this.signIn}>
-                  <Text> Sign In </Text>
+              <Col size={20} />
+              <Col size={60}>
+                <Button block bordered large rounded style={NativeStyles.button} backgroundColor={'#faba12'} marginTop={'50%'} onPress={this.signIn}>
+                  <Text style={Styles.buttonText}> Sign In </Text>
                 </Button>
-                <Button block bordered rounded style={NativeStyles.inButton} onPress={this.signUp}>
-                  <Text> Sign Up </Text>
+                <Button block bordered large rounded style={NativeStyles.inButton} backgroundColor={'white'} onPress={this.signUp}>
+                  <Text style={Styles.buttonText}> Sign Up </Text>
                 </Button>
               </Col>
-              <Col size={25} />
+              <Col size={20} />
             </Grid>
           </View>
         </Image>
