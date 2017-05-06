@@ -18,7 +18,7 @@ export default function LocationSearch(props) {
       getDefaultValue={() => ''} // text input default value
       query={{
         // available options: https://developers.google.com/places/web-service/autocomplete
-        key: 'AIzaSyCvNusrMY6pA7DSPUY_eN8tHE1liuTpCN8',
+        key: 'AIzaSyD430G_Q9_DsbPaTNNMTEpEo-Z06pUm0fc',
         language: 'en', // language of the results
         types: '',  // default: 'geocode'
         location: ' -31.980101,115.818650',
@@ -41,7 +41,7 @@ export default function LocationSearch(props) {
       // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
       nearbyPlacesAPI="GoogleReverseGeocoding"
       GoogleReverseGeocodingQuery={{
-        key: 'AIzaSyCvNusrMY6pA7DSPUY_eN8tHE1liuTpCN8',
+        key: 'AIzaSyD430G_Q9_DsbPaTNNMTEpEo-Z06pUm0fc',
         language: 'en',
         region: 'au',
         // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro

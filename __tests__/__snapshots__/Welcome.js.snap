@@ -58,7 +58,7 @@ exports[`Matches snapshot 1`] = `
         style={
           Object {
             "color": "navy",
-            "fontSize": 30,
+            "fontSize": 25,
             "textAlign": "center",
           }
         }
@@ -74,19 +74,19 @@ exports[`Matches snapshot 1`] = `
         }
       >
         <View
-          size={25}
+          size={20}
           style={
             Object {
-              "flex": 25,
+              "flex": 20,
               "flexDirection": "column",
             }
           }
         />
         <View
-          size={50}
+          size={60}
           style={
             Object {
-              "flex": 50,
+              "flex": 60,
               "flexDirection": "column",
             }
           }
@@ -115,7 +115,7 @@ exports[`Matches snapshot 1`] = `
                 "borderWidth": 1,
                 "elevation": null,
                 "flexDirection": "row",
-                "height": 45,
+                "height": 60,
                 "justifyContent": "center",
                 "marginBottom": "5%",
                 "marginTop": "5%",
@@ -137,6 +137,11 @@ exports[`Matches snapshot 1`] = `
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
             >
                Sign In 
             </Text>
@@ -165,10 +170,8 @@ exports[`Matches snapshot 1`] = `
                 "borderWidth": 1,
                 "elevation": null,
                 "flexDirection": "row",
-                "height": 45,
+                "height": 60,
                 "justifyContent": "center",
-                "marginBottom": "5%",
-                "marginTop": "5%",
                 "opacity": 1,
                 "paddingBottom": 6,
                 "paddingLeft": 26,
@@ -187,66 +190,21 @@ exports[`Matches snapshot 1`] = `
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-            >
-               API Test 
-            </Text>
-          </View>
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "alignSelf": "stretch",
-                "backgroundColor": "transparent",
-                "borderColor": "#007aff",
-                "borderRadius": 57,
-                "borderWidth": 1,
-                "elevation": null,
-                "flexDirection": "row",
-                "height": 45,
-                "justifyContent": "center",
-                "marginBottom": "5%",
-                "marginTop": "5%",
-                "opacity": 1,
-                "paddingBottom": 6,
-                "paddingLeft": 26,
-                "paddingRight": 26,
-                "paddingTop": 6,
-                "shadowColor": null,
-                "shadowOffset": null,
-                "shadowOpacity": null,
-                "shadowRadius": null,
+              style={
+                Object {
+                  "fontSize": 20,
+                }
               }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
             >
-               Clear App Data 
+               Sign Up 
             </Text>
           </View>
         </View>
         <View
-          size={25}
+          size={20}
           style={
             Object {
-              "flex": 25,
+              "flex": 20,
               "flexDirection": "column",
             }
           }
@@ -389,7 +347,8 @@ exports[`Matches snapshot 1`] = `
           renderScrollComponent={[Function]}
           style={
             Object {
-              "marginHorizontal": -15,
+              "marginLeft": -15,
+              "marginRight": -15,
               "marginTop": 15,
             }
           }

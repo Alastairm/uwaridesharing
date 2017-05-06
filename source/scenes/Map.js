@@ -3,6 +3,7 @@ import { AsyncStorage, StyleSheet, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
+import * as firebase from 'firebase';
 
 import Button from '../components/Button.js';
 import LocationSearch from '../components/LocationSearch.js';
@@ -14,6 +15,7 @@ export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: { uid: null },
       region: {
         latitude: -31.980101,
         longitude: 115.818650,
@@ -24,15 +26,15 @@ export default class Map extends Component {
     this.onNext = this.onNext.bind(this);
     this.onRegionChange = this.onRegionChange.bind(this);
     this.onLocationSeach = this.onLocationSeach.bind(this);
+    this.pushJob = this.pushJob.bind(this);
   }
   async onNext() {
-    await AsyncStorage.setItem('endpoint.lat', String(this.state.region.latitude));
-    await AsyncStorage.setItem('endpoint.lon', String(this.state.region.longitude));
-    // Navigator should use context instead of props.
-    // eslint-disable-next-line
-    this.props.navigator.push({
-      component: Dotw,
-    });
+    const uid = await AsyncStorage.getItem('user.uid');
+    const ref = await firebase.database().ref(`users/${uid}/`);
+    // Create dispatch callback fn to show tracking once job is in spatula.
+
+    // Push the job to Firebase backend.
+    this.pushJob(ref);
   }
   onRegionChange(region) {
     this.setState({ region });
@@ -43,6 +45,18 @@ export default class Map extends Component {
     region.latitude = parseFloat(details.geometry.location.lat);
     region.longitude = parseFloat(details.geometry.location.lng);
     this.setState({ region });
+  }
+  async pushJob(ref) {
+    ref.child('job').set({
+      latitude: this.state.region.latitude,
+      longitude: this.state.region.longitude,
+    }).then(() => {
+      // Navigator should use context instead of props.
+      // eslint-disable-next-line
+      this.props.navigator.push({
+        component: Dotw,
+      });
+    });
   }
   render() {
     return (
