@@ -550,10 +550,10 @@ exports[`Matches snapshot 1`] = `
         }
       >
         <View
-          size={50}
+          size={25}
           style={
             Object {
-              "flex": 50,
+              "flex": 25,
               "flexDirection": "column",
             }
           }
@@ -584,15 +584,15 @@ exports[`Matches snapshot 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
+                "alignSelf": "stretch",
                 "backgroundColor": "#007aff",
                 "borderColor": "#007aff",
                 "borderRadius": 57,
                 "borderWidth": null,
                 "elevation": 2,
                 "flexDirection": "row",
-                "height": 60,
-                "justifyContent": "space-between",
+                "height": 45,
+                "justifyContent": "center",
                 "marginBottom": "5%",
                 "marginTop": "5%",
                 "opacity": 1,
@@ -610,15 +610,15 @@ exports[`Matches snapshot 1`] = `
               allowFontScaling={true}
               ellipsizeMode="tail"
             >
-               submit 
+               SUBMIT 
             </Text>
           </View>
         </View>
         <View
-          size={40}
+          size={25}
           style={
             Object {
-              "flex": 40,
+              "flex": 25,
               "flexDirection": "column",
             }
           }

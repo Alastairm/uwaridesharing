@@ -309,7 +309,7 @@ exports[`Matches snapshot 1`] = `
               allowFontScaling={true}
               ellipsizeMode="tail"
             >
-               Login 
+               LOGIN 
             </Text>
           </View>
         </View>

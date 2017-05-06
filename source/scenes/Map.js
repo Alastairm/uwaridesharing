@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
-import { Body, Button, Col, Container, Grid, Header, Left, Right, Title } from 'native-base';
+import { Body, Button, Container, Header, Right, Title } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MapView from 'react-native-maps';
