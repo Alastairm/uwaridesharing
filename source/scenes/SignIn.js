@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import {
   Button,
+  Col,
   Container,
   Content,
   Form,
+  Grid,
   Item,
   Input,
   Label,
@@ -12,6 +14,7 @@ import {
 import * as firebase from 'firebase';
 
 import Map from './Map.js';
+import { NativeStyles } from './Styles.js';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -53,9 +56,15 @@ export default class SignIn extends Component {
               <Input onChangeText={this.setPass} />
             </Item>
           </Form>
-          <Button rounded large info onPress={this.login}>
-            <Text> Login </Text>
-          </Button>
+          <Grid>
+            <Col size={25} />
+            <Col size={50}>
+              <Button block rounded style={NativeStyles.button} backgroundColor={'#0060b6'} marginTop={'30%'} onPress={this.login}>
+                <Text> LOGIN </Text>
+              </Button>
+            </Col>
+            <Col size={25} />
+          </Grid>
         </Content>
       </Container>
     );

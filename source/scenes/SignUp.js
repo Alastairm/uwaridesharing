@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { AsyncStorage, Text } from 'react-native';
 import {
+  Col,
   Container,
   Content,
   Form,
+  Grid,
   Item,
   Input,
   Label,
@@ -12,7 +14,7 @@ import {
 } from 'native-base';
 import * as firebase from 'firebase';
 
-import { Styles } from './Styles.js';
+import { Styles, NativeStyles } from './Styles.js';
 import Map from './Map.js';
 
 
@@ -211,11 +213,15 @@ export default class SignUp extends Component {
               />
             </Item>
           </Form>
-
-          <Button rounded large info onPress={this.onNext} >
-            <Text> submit </Text>
-          </Button>
-
+          <Grid>
+            <Col size={25} />
+            <Col size={50}>
+              <Button rounded block style={NativeStyles.button} backgroundColor={'#0060b6'} marginTop={'30%'} onPress={this.onNext} >
+                <Text> SUBMIT </Text>
+              </Button>
+            </Col>
+            <Col size={25} />
+          </Grid>
           <NameErrorMessage
             isFilled={this.state.isFilled.name}
             isValid={this.state.isValid.name}
