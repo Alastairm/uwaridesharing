@@ -1,3 +1,5 @@
+// @flow
+
 /* eslint react/prop-types: 0 */  // --> OFF
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
