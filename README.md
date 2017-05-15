@@ -8,6 +8,8 @@
 
 ## Testing and Quality Assurance
 
+### Tests
+
 #### JavaScript Testing
 - [ ] Jest
 - [ ] Flow
@@ -23,3 +25,15 @@
 
 #### End-to-end Testing
 - [ ] Overall
+
+### QA Manual
+
+### Test Design Process
+
+### Test and Software Metrics
+
+### Alternate techniques
+
+### Run and Build Instructions
+
+### Assumptions and Review
