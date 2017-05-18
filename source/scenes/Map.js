@@ -23,11 +23,14 @@ export default class Map extends Component {
         latitudeDelta: 0.0045,
         longitudeDelta: 0.006,
       },
+      direction: '',
     };
     this.onNext = this.onNext.bind(this);
     this.onRegionChange = this.onRegionChange.bind(this);
     this.onLocationSeach = this.onLocationSeach.bind(this);
     this.pushJob = this.pushJob.bind(this);
+    this.touwa = this.touwa.bind(this);
+    this.fromuwa = this.fromuwa.bind(this);
   }
   async onNext() {
     const uid = await AsyncStorage.getItem('user.uid');
@@ -46,6 +49,12 @@ export default class Map extends Component {
     region.latitude = parseFloat(details.geometry.location.lat);
     region.longitude = parseFloat(details.geometry.location.lng);
     this.setState({ region });
+  }
+  touwa() {
+    this.setState({ direction: 'touwa' });
+  }
+  fromuwa() {
+    this.setState({ direction: 'fromuwa' });
   }
   async pushJob(ref) {
     ref.child('job').set({
@@ -81,6 +90,22 @@ export default class Map extends Component {
           <Icon name="map-marker" size={50} color="#0060C0" />
           <View style={Styles.scene}>
             <View style={Styles.header}>
+              <View style={Styles.twoway}>
+                <Button
+                  block
+                  style={this.state.direction === 'touwa' ? NativeStyles.mapdirectionOn : NativeStyles.mapdirectionOff}
+                  onPress={this.touwa}
+                >
+                  <Text> To UWA </Text>
+                </Button>
+                <Button
+                  block
+                  style={this.state.direction === 'fromuwa' ? NativeStyles.mapdirectionOn : NativeStyles.mapdirectionOff}
+                  onPress={this.fromuwa}
+                >
+                  <Text> From UWA </Text>
+                </Button>
+              </View>
               <LocationSearch onPress={this.onLocationSeach} justifyContent={'flex-start'} />
             </View>
             <View style={Styles.footer}>
