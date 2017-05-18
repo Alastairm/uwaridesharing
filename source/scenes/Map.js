@@ -60,6 +60,7 @@ export default class Map extends Component {
     ref.child('job').set({
       latitude: this.state.region.latitude,
       longitude: this.state.region.longitude,
+      direction: this.state.direction,
     }).then(() => {
       // Navigator should use context instead of props.
       // eslint-disable-next-line
