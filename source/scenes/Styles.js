@@ -27,6 +27,10 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: '2%', // relative spacing between button and bottom of screen
   },
+  twoway: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
   errorText: {
     color: 'red',
   },
@@ -64,6 +68,14 @@ const NativeStyles = {
   button: {
     marginTop: '5%',
     marginBottom: '5%',
+  },
+  mapdirectionOff: {
+    flex: 0.5,
+    backgroundColor: '#FFFFFF',
+  },
+  mapdirectionOn: {
+    flex: 0.5,
+    backgroundColor: '#80bfff',
   },
   scene: { // generic view style
     flexDirection: 'column',
