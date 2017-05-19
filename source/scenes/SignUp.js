@@ -208,6 +208,7 @@ export default class SignUp extends Component {
               <Icon active name="key" />
               <Label>Password</Label>
               <Input
+                secureTextEntry={true}
                 onChangeText={this.validatePass}
                 onBlur={this.passFilled}
               />
