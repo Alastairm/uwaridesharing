@@ -53,7 +53,7 @@ export default class SignIn extends Component {
             </Item>
             <Item floatingLabel last>
               <Label>Password</Label>
-              <Input onChangeText={this.setPass} />
+              <Input secureTextEntry={true} onChangeText={this.setPass} />
             </Item>
           </Form>
           <Grid>

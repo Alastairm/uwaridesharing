@@ -525,6 +525,7 @@ exports[`Matches snapshot 1`] = `
             onChangeText={[Function]}
             onFocus={[Function]}
             placeholderTextColor="#575757"
+            secureTextEntry={true}
             style={
               Object {
                 "color": "#000",
